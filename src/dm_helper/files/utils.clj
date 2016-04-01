@@ -19,17 +19,104 @@
 (defn is-xml? [file]
   (not (nil? (re-find (re-pattern "\\.xml$") file))))
 
-(defn files-by-folder [base-path folder]
+(defn files-by-filter [base-path folder f]
   (let [path (io/file base-path folder)
         files (file-seq path)]
-    (filter #(is-xml? (.getPath %)) files)))
+    (filter f files)))
 
-(defn monster-files
-  ""
-  [base-path]
-  (files-by-folder base-path "Bestiary"))
+(defn files-by-folder [base-path folder]
+  (files-by-filter base-path folder #(is-xml? (.getPath %))))
 
-(defn spell-files
+(defn files-from-dir
+  [base-path dir]
+  (files-by-folder base-path dir))
+
+(defn specific-file-from-dir [base-path folder name]
+  (let [pattern (re-pattern name)
+        method #(re-find pattern (.getPath %))]
+    (files-by-filter base-path folder method)
+    )
+  )
+
+(defn group-by-tags
+  [t]
+  (group-by :tag (:content t)))
+
+(defn stat-to-map
+  "Turns {:tag :name, :content [Ancient Gold Dragon]} into {:name 'Ancient Gold Dragon'}"
+  [stat]
+  (let [n (stat :tag)
+        content (first (stat :content))]
+    ;; (if (nil? content)
+    ;;   {n ()}
+    ;;   )
+
+    ;; (println "name: " n ", content: " content)
+
+    {n content}
+    ))
+
+(defn fix-tag
+  [action]
+  (let [content (:content action)
+        n (first (:content (first content)))
+        text (first (:content (second content)))]
+    (if (and (nil? n) (nil? text))
+      (if (nil? content)
+        "\n"
+        content)
+      {:name n :text text})))
+
+(defn needs-better-name
   ""
-  [base-path]
-  (files-by-folder base-path "Spells"))
+  [thing]
+  (let [name (first thing)
+        tags (second thing)]
+    (if (= (count tags) 1)
+      (stat-to-map (first tags))
+      {name (into [] (map fix-tag tags))})))
+
+(defn also-needs-name
+  ""
+  [things]
+
+  (loop [list things
+         result []]
+    (let [d (into {} (first list))
+          r (rest list)]
+      (if (> (count r) 0)
+        (recur r (conj result d))
+        (conj result (into {} (first list)))))))
+
+(defn load-from-file
+  ""
+  [file]
+  (also-needs-name
+   (map #(map needs-better-name (group-by-tags %))
+        (:content (first (zip-str (slurp (data-file file))))))))
+
+(defn load-all-things
+  [files]
+  (loop [files files
+         results []]
+    (let [f (first files)
+          r (rest files)]
+      (if (> (count r) 0)
+        (recur r (into results (load-from-file (.getPath f))))
+        (into results (load-from-file (.getPath f)))))))
+
+(defn not-re-find-name?
+  ""
+  [thing pattern]
+  (not
+   (nil?
+    (re-find pattern (:name thing)))))
+
+(defn filter-by-name
+  "Find a creature in the list"
+  [things looking-for]
+  (let [pattern (re-pattern looking-for)]
+    (into []
+          (filter
+           #(not-re-find-name? % pattern)
+           things))))
