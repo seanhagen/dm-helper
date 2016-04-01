@@ -6,11 +6,11 @@
 (defn load-all-spells
   ""
   [base-path]
-  (util/load-all-things (util/files-from-dir base-path "Bestiary")))
+  (util/load-all-things (util/files-from-dir base-path "Spells")))
 
 (defn load-all-monsters
   [base-path]
-  (util/load-all-things (util/files-from-dir base-path "Spells")))
+  (util/load-all-things (util/files-from-dir base-path "Bestiary")))
 
 (defn load-all-items
   [base-path]
@@ -37,78 +37,40 @@
   [base-path]
   (load-all-from-character-files base-path "Backgrounds"))
 
-;; (defn argh
-;;   [content]
-
-;;   (map
-;;    #(let [parts (group-by :tag (:content %))]
-;;       {:name (:content (first (:name parts)))
-;;        :text ""
-;;        :optional false
-;;        :modifier {}}
-;;       )
-;;    content)
-;;   )
-
 (defn parse-slots [arg]
-  {:slots (first (:content arg))}
-  )
+  {:slots (first (:content arg))})
+
+(defn fix-feature-text
+  [feature text]
+  (if (= (type text) java.lang.String)
+    (into feature {:text [text]})
+    (into feature {:text (into [] (map first (:text feature)))})))
 
 (defn parse-feature [arg]
-  (let [f (into {} (map util/needs-better-name (group-by :tag (:content arg))))]
-    ;; need to include optional thingy here
-    (into f {:text (into [] (map first (:text f)))}))
-  )
+  (let [f (into {} (map util/needs-better-name (group-by :tag (:content arg))))
+        t (:text f)]
+    (if (not (nil? (:attrs arg)))
+      (into (fix-feature-text f t) {:optional true})
+      (fix-feature-text f t))))
 
 (defn fixing [arg]
   (if (= (count (:content arg)) 1)
     (parse-slots arg)
-    (parse-feature arg)
-    )
-  )
+    (parse-feature arg)))
 
 (defn group-autolevel [arg]
-  (group-by
-   #(get-in % [:attrs :level])
-   (:autolevel (group-by :tag (:content arg)))))
+  (group-by #(get-in % [:attrs :level]) arg))
 
-(defn argh [d]
-  (println "argh: " (first (:content (first (get (group-autolevel d) "2")))))
-  (println "fixed: " (fixing (first (:content (first (get (group-autolevel d) "2"))))))
-
-  (println "argh: " (first (:content (last (get (group-autolevel d) "2")))))
-  (println "fixed: " (fixing (first (:content (last (get (group-autolevel d) "2"))))))
-
-  (println "\n\n--------------------\n\n")
-
-  (println
-
-   (map fixing
-        (map #(first (:content %))
-             (get (group-autolevel d) "2")))
-
-   )
-
-
-  (map
-   #(first (:content %))
-
-   (get (group-autolevel d) "1")
-
-   )
-  )
+(defn autolevel-into-map [bit]
+  (let [index (first bit)
+        autolevel (:content (first (last bit)))
+        fixed (map fixing autolevel)]
+    {index (into [] fixed)}))
 
 (defn fix-autolevels
   [als]
-
-  ;; (println "autolevels: " als)
-
-  ;; (let [parts (group-by #(get-in % [:attrs :level]) als)]
-  ;;   (last (:content (first (get parts 2))))
-  ;;   )
-
-  als
-  )
+  (let [grouped (group-autolevel als)]
+    (into [] (map autolevel-into-map grouped))))
 
 (defn load-all-classes
   [base-path]
@@ -117,22 +79,25 @@
                 (slurp (util/data-file (.getPath (first files)))))
         parts  (group-by :tag (:content (first xml)))
         spells (into [] (map #(into {} %) (map #(map util/needs-better-name (util/group-by-tags %)) (:spell parts))))]
-
-
     (loop [classes (:class parts)
            results []]
       (let [class (group-by :tag (:content (first classes)))
             autolevel (:autolevel class)
             class (into {} (map util/needs-better-name (dissoc class :autolevel)))
-            results (conj results (into class (fix-autolevels autolevel)))]
-
+            al (fix-autolevels autolevel)
+            t (into class {:levels al})
+            results (conj results t)]
+        ;; (println "class: " t)
+        ;; (println "count results: " (count results))
+        ;; (println "\n\n--------\n\n")
         (if (> (count classes) 0)
           (recur (rest classes) results)
-          {:spells spells
+          { :spells spells
            :classes results}
           )
         )
       )
 
-    (:class parts)
+    ;;(:class parts)
+
     ))

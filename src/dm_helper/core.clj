@@ -10,37 +10,24 @@
   "LEEEARNING"
   [& args]
 
-  ;; (let [monsters (file-monster/load-all-monsters (first args))]
-  ;;   (loop [monsters (file-monster/filter-creature monsters "Dragon")]
-  ;;     (println (:name (first monsters)))
-  ;;     (if (> (count monsters) 0)
-  ;;       (recur (rest monsters)))))
+  (time
+   (let [path (first args)
+         monsters (books/load-all-monsters path)
+         spells (books/load-all-spells path)
+         ;; arcana (books/load-all-unearthed path)
+         races (books/load-all-races path)
+         classes-and-spells (books/load-all-classes path)
+         spells (into spells (:spells classes-and-spells))
+         classes (:classes classes-and-spells)
+         feats (books/load-all-feats path)
+         backgrounds (books/load-all-backgrounds path)
+         ]
 
-  (let [path (first args)
-        ;; monsters (books/load-all-monsters path)
-        ;; spells (books/load-all-spells path)
-        ;; arcana (books/load-all-unearthed path)
-        ;; races (books/load-all-races path)
-        classes (books/load-all-classes path)
-        ;; feats (books/load-all-feats path)
-        ;; backgrounds (books/load-all-backgrounds path)
-        ]
-    ;; (println (first monsters) "\n\n")
-    ;; (println (first spells) "\n\n")
-    ;; (println (first feats) "\n\n")
-    ;; (println (first races) "\n\n")
-    ;;(println (first classes) "\n\n")
-    ;; (let [barbarian (first classes)]
-    ;;   ;; (println "content?: " (:content barbarian))
-    ;;   ;; (println "argh: " (first barbarian))
-    ;;   )
-    ;; (println (first feats) "\n\n")
-    ;; (println (first backgrounds) "\n\n")
-
-    ;; (println (first classes))
-    (println
-     (map #(count (:content %))
-          (books/argh (nth classes 2))
-          ))
-
-    ))
+     (println "monsters: " (first monsters) "\n\n")
+     (println "spells: " (first spells) "\n\n")
+     ;; (println (first arcana) "\n\n")
+     (println "races: " (first races) "\n\n")
+     (println "classes: " (first classes) "\n\n")
+     (println "feats: " (first feats) "\n\n")
+     (println "backgrounds: " (first backgrounds) "\n\n")
+     )))
