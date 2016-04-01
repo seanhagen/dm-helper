@@ -50,21 +50,64 @@
 ;;    content)
 ;;   )
 
-;; (defn parse-autolevel
-;;   [al]
+(defn parse-slots [arg]
+  {:slots (first (:content arg))}
+  )
+
+(defn parse-feature [arg]
+  (let [f (into {} (map util/needs-better-name (group-by :tag (:content arg))))]
+    ;; need to include optional thingy here
+    (into f {:text (into [] (map first (:text f)))}))
+  )
+
+(defn fixing [arg]
+  (if (= (count (:content arg)) 1)
+    (parse-slots arg)
+    (parse-feature arg)
+    )
+  )
+
+(defn group-autolevel [arg]
+  (group-by
+   #(get-in % [:attrs :level])
+   (:autolevel (group-by :tag (:content arg)))))
+
+(defn argh [d]
+  (println "argh: " (first (:content (first (get (group-autolevel d) "2")))))
+  (println "fixed: " (fixing (first (:content (first (get (group-autolevel d) "2"))))))
+
+  (println "argh: " (first (:content (last (get (group-autolevel d) "2")))))
+  (println "fixed: " (fixing (first (:content (last (get (group-autolevel d) "2"))))))
+
+  (println "\n\n--------------------\n\n")
+
+  (println
+
+   (map fixing
+        (map #(first (:content %))
+             (get (group-autolevel d) "2")))
+
+   )
 
 
-;;   {(get-in al [:attrs :level]) (argh al)}
+  (map
+   #(first (:content %))
 
-;;   )
+   (get (group-autolevel d) "1")
+
+   )
+  )
 
 (defn fix-autolevels
   [als]
 
-  (println "autolevels: " als)
-  ;; {:autolevels (into {} (parse-autolevel (first als)))}
+  ;; (println "autolevels: " als)
 
-  (group-by #(get-in % [:attrs :level]) als)
+  ;; (let [parts (group-by #(get-in % [:attrs :level]) als)]
+  ;;   (last (:content (first (get parts 2))))
+  ;;   )
+
+  als
   )
 
 (defn load-all-classes
@@ -91,41 +134,5 @@
         )
       )
 
+    (:class parts)
     ))
-
-
-(def al [
-         {:tag :autolevel, :attrs {:level 1},
-          :content [
-                    {:tag :feature, :attrs nil,
-                     :content [{:tag :name, :attrs nil, :content ["Starting Proficiencies"]}
-                               {:tag :text, :attrs nil, :content ["You are proficient with the following items, in addition to any proficiencies provided by your race or background."]}
-                               {:tag :text, :attrs nil, :content ["Armor: light armor, medium armor, shields"]}
-                               {:tag :text, :attrs nil, :content ["Weapons: simple weapons, martial weapons"]}
-                               {:tag :text, :attrs nil, :content ["Tools: none"]}
-                               {:tag :text, :attrs nil, :content ["Skills: Choose two from Animal Handling, Athletics, Intimidation, Nature, Perception, and Survival"]}]}
-                    {:tag :feature, :attrs nil,
-                     :content [{:tag :name, :attrs nil, :content ["Starting Equipment"]}
-                               {:tag :text, :attrs nil, :content ["You start with the following items, plus anything provided by your background."]}
-                               {:tag :text, :attrs nil, :content nil}
-                               {:tag :text, :attrs nil, :content ["• (a) a greataxe or (b) any martial melee weapon"]}
-                               {:tag :text, :attrs nil, :content ["• (a) two handaxes or (b) any simple weapon"]}
-                               {:tag :text, :attrs nil, :content ["• An explorer's pack, and four javelins"]}
-                               {:tag :text, :attrs nil, :content nil}
-                               {:tag :text, :attrs nil, :content ["Alternatively, you may start with 2d4 x 10 gp to buy your own equipment."]}]}]}
-         {:tag :autolevel, :attrs {:level 1},
-          :content [
-                    {:tag :feature, :attrs nil,
-                     :content [{:tag :name, :attrs nil, :content ["Rage"]}
-                               {:tag :text, :attrs nil, :content ["In battle, you fight with primal ferocity. On your turn, you can enter a rage as a bonus action."]}
-                               {:tag :text, :attrs nil, :content ["    While raging, you gain the following benefits if you aren't wearing heavy armor:"]}
-                               {:tag :text, :attrs nil, :content nil}
-                               {:tag :text, :attrs nil, :content ["• You have advantage on Strength checks and Strength saving throws."]}
-                               {:tag :text, :attrs nil, :content ["• When you make a melee weapon attack using Strength, you gain a +2 bonus to the damage roll. This bonus increases as you level."]}
-                               {:tag :text, :attrs nil, :content ["• You have resistance to bludgeoning, piercing, and slashing damage."]}
-                               {:tag :text, :attrs nil, :content nil}
-                               {:tag :text, :attrs nil, :content ["If you are able to cast spells, you can't cast them or concentrate on them while raging."]}
-                               {:tag :text, :attrs nil, :content ["    Your rage lasts for 1 minute. It ends early if you are knocked unconscious or if your turn ends and you haven't attacked a hostile creature since your last turn or taken damage since then. You can also end your rage on your turn as a bonus action."]}
-                               {:tag :text, :attrs nil, :content ["    Once you have raged the maximum number of times for your barbarian level, you must finish a long rest before you can rage again.  You may rage 2 times at 1st level, 3 at 3rd, 4 at 6th, 5 at 12th, and 6 at 17th."]}]}
-                    {:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content ["Unarmored Defense"]}
-                                                          {:tag :text, :attrs nil, :content ["While you are not wearing any armor, your Armor Class equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit."]}]}]}])

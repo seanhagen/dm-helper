@@ -37,6 +37,10 @@
     ;; (println (first feats) "\n\n")
     ;; (println (first backgrounds) "\n\n")
 
-    (println classes)
+    ;; (println (first classes))
+    (println
+     (map #(count (:content %))
+          (books/argh (nth classes 2))
+          ))
 
     ))
