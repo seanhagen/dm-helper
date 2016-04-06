@@ -1,0 +1,6 @@
+* loading data
+** don't require the path to xml files on startup
+** let user import after app starts
+*** single file or directory with xmls
+** auto-identify files on import, don't require them to match the D&D App Files layout ( just the schema )
+** filter out duplicate entries after loading new file

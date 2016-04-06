@@ -1,6 +1,6 @@
-# dm-helper
+# DM Helper
 
-FIXME: description
+An app to help DM's run games in D&D 5th Edition!
 
 ## Installation
 
