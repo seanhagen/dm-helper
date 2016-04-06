@@ -47,14 +47,7 @@
   [stat]
   (let [n (stat :tag)
         content (first (stat :content))]
-    ;; (if (nil? content)
-    ;;   {n ()}
-    ;;   )
-
-    ;; (println "name: " n ", content: " content)
-
-    {n content}
-    ))
+    {n content}))
 
 (defn fix-tag
   [action]

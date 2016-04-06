@@ -87,17 +87,15 @@
             al (fix-autolevels autolevel)
             t (into class {:levels al})
             results (conj results t)]
-        ;; (println "class: " t)
-        ;; (println "count results: " (count results))
-        ;; (println "\n\n--------\n\n")
+
         (if (> (count classes) 0)
           (recur (rest classes) results)
-          { :spells spells
-           :classes results}
+          {
+           :spells spells
+           :classes (drop-last results)
+           }
           )
         )
       )
-
-    ;;(:class parts)
 
     ))
