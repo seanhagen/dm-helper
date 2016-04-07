@@ -5,7 +5,8 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.apache.commons/commons-io "1.3.2"]
-                 [seesaw "1.4.5"]]
+                 [seesaw "1.4.5"]
+                 [inflections "0.12.1"]]
   :main ^:skip-aot dm-helper.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}

@@ -17,7 +17,23 @@
       (io/file res))))
 
 (defn is-xml? [file]
+  ;; (re-matches (re-pattern "\\.xml$") file)
   (not (nil? (re-find (re-pattern "\\.xml$") file))))
+
+(defn not-russian? [file]
+  (nil? (re-find (re-pattern "Russian") file)))
+
+(defn not-ua? [file]
+  (nil? (re-find (re-pattern "Unearthed Arcana") file)))
+
+(defn all-xml-from-dir [dirpath]
+  (doall (filter (fn [n]
+                   ;; (println "file: " (.getName n) ", is xml: " (is-xml? (.getName n)))
+                   (and
+                    (not-russian? (.getPath n))
+                    (is-xml? (.getName n))
+                    (not-ua? (.getPath n))))
+                 (file-seq (io/file dirpath)))))
 
 (defn files-by-filter [base-path folder f]
   (let [path (io/file base-path folder)
@@ -34,9 +50,7 @@
 (defn specific-file-from-dir [base-path folder name]
   (let [pattern (re-pattern name)
         method #(re-find pattern (.getPath %))]
-    (files-by-filter base-path folder method)
-    )
-  )
+    (files-by-filter base-path folder method)))
 
 (defn group-by-tags
   [t]
@@ -44,9 +58,14 @@
 
 (defn stat-to-map
   "Turns {:tag :name, :content [Ancient Gold Dragon]} into {:name 'Ancient Gold Dragon'}"
+  ;; TODO: need to fix this:
+  ;; Stat to map:  {:tag :modifier, :attrs {:category ability score}, :content [charisma +1]}
+  ;; new map:  {:modifier charisma +1}
   [stat]
+  ;; (println "Stat to map: " stat)
   (let [n (stat :tag)
         content (first (stat :content))]
+    ;; (println "new map: "  {n content} "\n\n")
     {n content}))
 
 (defn fix-tag
