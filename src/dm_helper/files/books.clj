@@ -5,40 +5,6 @@
             [inflections.core :as infl]
             [clojure.string :as s]))
 
-(defn load-all-spells
-  ""
-  [base-path]
-  (util/load-all-things (util/files-from-dir base-path "Spells")))
-
-(defn load-all-monsters
-  [base-path]
-  (util/load-all-things (util/files-from-dir base-path "Bestiary")))
-
-(defn load-all-items
-  [base-path]
-  (util/load-all-things (util/files-from-dir base-path "Items")))
-
-(defn load-all-unearthed
-  [base-path]
-  (util/load-all-things (util/files-from-dir base-path "Unearthed Arcana")))
-
-(defn load-all-from-character-files
-  [base-path t]
-  (util/load-all-things (util/specific-file-from-dir base-path "Character Files" t))
-  )
-
-(defn load-all-feats
-  [base-path]
-  (load-all-from-character-files base-path "Feats"))
-
-(defn load-all-races
-  [base-path]
-  (load-all-from-character-files base-path "Races"))
-
-(defn load-all-backgrounds
-  [base-path]
-  (load-all-from-character-files base-path "Backgrounds"))
-
 (defn parse-slots [arg]
   {:slots (first (:content arg))})
 
@@ -74,7 +40,6 @@
   (let [grouped (group-autolevel als)]
     (into [] (map autolevel-into-map grouped))))
 
-
 (defn parse-classes
   [info]
   (loop [classes info
@@ -85,35 +50,15 @@
           al (fix-autolevels autolevel)
           t (into class {:levels al})
           results (conj results t)]
-
       (if (> (count classes) 0)
         (recur (rest classes) results)
-        (drop-last results)
-        )
-      )
-    )
-
-  )
+        (drop-last results)))))
 
 (defn parse-other
   [info]
   (into [] (map #(into {} %) (map #(map util/needs-better-name (util/group-by-tags %)) info))))
 
-(defn load-all-classes
-  [base-path]
-  (let [files  (util/specific-file-from-dir base-path "Character Files" "Class")
-        xml    (util/zip-str
-                (slurp (util/data-file (.getPath (first files)))))
-        parts  (group-by :tag (:content (first xml)))
-        ]
-    {
-     :spells (parse-other (:spell parts))
-     :classes (parse-classes (:class parts))
-     }
-    ))
-
 (defn xml-from-file [file]
-  ;; (println "loading xml from: " file)
   (util/zip-str
    (slurp (util/data-file (.getPath file)))))
 
@@ -124,12 +69,12 @@
 
 (defn parse-parts [result part]
   (let [key (infl/plural (str (first part)))
+        key (keyword (s/join (rest key)))
         bits (last part)]
-    ;; (println "parse-parts, key: " key)
     (into result
           (if (contains? result key)
-            {key (distinct (into (result key) (proper-parser-for key bits)))}
-            {key (distinct (proper-parser-for key bits))}))))
+            {key (into [] (distinct (into (result key) (proper-parser-for key bits))))}
+            {key (into [] (distinct (proper-parser-for key bits)))}))))
 
 (defn load-all-from-dir
   [base-path]
@@ -161,20 +106,17 @@
         fixed (keyword (s/join (rest key)))]
     {fixed data}))
 
-
-(defn load-saved-info []
+(defn load-saved-info [info-ref]
   (let [saved (str app-dir "/info.clj")]
     (if (.exists (io/as-file saved))
-      (let [info (read-string (slurp saved))
-            fixed (into {} (map fix-pair info))]
-        ;; (println "keys: " (keys info) (map type (keys info)) "\n\n")
-        ;; (println "fixed keys: " (keys fixed) (map type (keys fixed)) "\n\n")
-        ;;info
-        fixed
-        )
-      {:monsters [] :spells [] :races [] :classes [] :feats [] :backgrounds [] :items []})))
+      (let [info (read-string (slurp saved))]
+        (dosync
+         (alter info-ref into info))))))
+
+(defn save-info-to-file [info]
+  (let [saved (str app-dir "/info.clj")]
+    (.mkdir (java.io.File. app-dir))
+    (spit saved info)))
 
 (defn sections-from-data [info]
-  ;; (println "info keys: " (keys info))
-
   (map (fn [e] (s/capitalize (name e))) (keys info)))

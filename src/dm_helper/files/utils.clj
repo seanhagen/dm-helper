@@ -73,6 +73,7 @@
   (let [content (:content action)
         n (first (:content (first content)))
         text (first (:content (second content)))]
+    (println "fix-tag! \n content: " content "\n n: " n "\n text: " text "\n\n")
     (if (and (nil? n) (nil? text))
       (if (nil? content)
         "\n"
