@@ -56,29 +56,43 @@
   [t]
   (group-by :tag (:content t)))
 
+(defn fix-tag
+  [action]
+  (let [content (:content action)
+        ;; n (first (:content (first content)))
+        ;; text (first (:content (second content)))
+        test (into {} (map (fn [e] {(:tag e) (first(:content e))}) content))]
+    test))
+
+(defn newline-if-nil [content]
+  (if (nil? (:content content)) "" (:content content)))
+
 (defn stat-to-map
   "Turns {:tag :name, :content [Ancient Gold Dragon]} into {:name 'Ancient Gold Dragon'}"
   ;; TODO: need to fix this:
   ;; Stat to map:  {:tag :modifier, :attrs {:category ability score}, :content [charisma +1]}
   ;; new map:  {:modifier charisma +1}
   [stat]
-  ;; (println "Stat to map: " stat)
-  (let [n (stat :tag)
-        content (first (stat :content))]
-    ;; (println "new map: "  {n content} "\n\n")
-    {n content}))
+  (let [n (:tag stat)
+        c (:content stat)
+        content (first c)
 
-(defn fix-tag
-  [action]
-  (let [content (:content action)
-        n (first (:content (first content)))
-        text (first (:content (second content)))]
-    (println "fix-tag! \n content: " content "\n n: " n "\n text: " text "\n\n")
-    (if (and (nil? n) (nil? text))
-      (if (nil? content)
-        "\n"
-        content)
-      {:name n :text text})))
+        test (into {} (if (not (-> c first string?))
+                        (map (fn [e]
+                               (let [name (first e)
+                                     tags (first (rest e))
+                                     content (string/join
+                                              (map #(str (first %) "\n")
+                                                   (map newline-if-nil tags)))]
+                                 {name content})
+                               ) (group-by :tag c))
+                        {n content}
+                        ))]
+
+    (if (not (= (first (keys test)) n))
+      {n [test]}
+      test
+      )))
 
 (defn needs-better-name
   ""

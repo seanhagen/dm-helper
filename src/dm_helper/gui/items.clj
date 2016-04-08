@@ -30,24 +30,13 @@
 (defn actions-to-panel [t]
   (loop [bits (if (vector? t) t [t])
          result []]
-
-    (println "got thing: " (first bits))
-
     (let [thing (first bits)
-          p (sc/border-panel :west (bold-label (:name thing))
-                             :center (sc/label :text (:text thing)))
-
-          ]
-
-      (println "thing: " thing "\n\n")
-
-      (if (> (count bits) 1)
+          name (:name thing)
+          text (:text thing)
+          p (sc/border-panel :west (bold-label name) :center (sc/label text))]
+      (if (> (count (rest bits)) 0)
         (recur (rest bits) (conj result p (sc/separator)))
-        result
-        )
-      )
-    )
-  )
+        (sc/vertical-panel :items (conj result p))))))
 
 (defn display-item-in-panel
   [selected-type selected items panel]
@@ -94,13 +83,15 @@
                                                  [stats "height ::80, wrap"]
                                                  [attrs "height ::80, wrap"]
                                                  [(title-label "Actions") "span"]
-                                                 ;; [(actions-to-panel (:trait thing)) "wrap"]
+                                                 [(actions-to-panel (:action thing)) "wrap, span"]
                                                  ]))
         ]
 
-    (println "what: " selected)
-    (actions-to-panel (:action thing))
-    (println "traits: \n" (:action thing) "\n" (type (:action thing)) "\n-------------\n\n")
+    ;; (println "actions: " (:action thing) "\n#####################\n\n"
+    ;;          (actions-to-panel (:action thing)) "\n\n####################\n")
+    ;; (println "what: " selected)
+    ;;(println "panel? " (actions-to-panel (:action thing)))
+    ;; (println "traits: \n" (:action thing) "\n" (type (:action thing)) "\n-------------\n\n")
 
     (sc/replace! panel current p)))
 

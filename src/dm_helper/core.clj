@@ -1,6 +1,7 @@
 (ns dm-helper.core
   (:gen-class)
-  (:use [seesaw.font])
+  (:use [seesaw.font]
+        [clojure.pprint])
   (:import [org.apache.commons.io.FilenameUtils])
   (:require [dm-helper.files.books :as books]
             [dm-helper.files.utils :as util]
@@ -39,15 +40,13 @@
 
   ;; (println "User home directory is: " books/app-dir)
 
-  ;; (sc/native!)
-  ;; (main-app)
+  (sc/native!)
+  (main-app)
 
 
-  (let [xml (books/xml-from-file (io/resource "test.xml"))
-        parts (group-by :tag (:content (first xml)))
-        result (into {} (map #(books/parse-parts {} %) parts))]
-
-    (println "result: " result)
-    )
+  ;; (let [xml (books/xml-from-file (io/resource "test.xml"))
+  ;;       parts (group-by :tag (:content (first xml)))
+  ;;       result (into {} (map #(books/parse-parts {} %) parts))]
+  ;;   (pprint result))
 
   )
