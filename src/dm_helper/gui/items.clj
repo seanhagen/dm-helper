@@ -10,9 +10,6 @@
 
 (def items-ref (ref []))
 
-
-
-
 (defn display-monster-in-panel
   [selected items panel]
 
@@ -28,6 +25,7 @@
 
 
 (defn actions-to-panel [t]
+  (println "actions-to-panel: " t)
   (loop [bits (if (vector? t) t [t])
          result []]
     (let [thing (first bits)
@@ -80,10 +78,13 @@
 
         p (sc/scrollable (smig/mig-panel :items [
                                                  [name "span"]
-                                                 [stats "height ::80, wrap"]
+                                                 [stats "height ::80"]
+                                                 ["  ", "width ::20"]
                                                  [attrs "height ::80, wrap"]
-                                                 [(title-label "Actions") "span"]
+                                                 [(title-label "Actions") "wrap, span"]
                                                  [(actions-to-panel (:action thing)) "wrap, span"]
+                                                 [(title-label "Traits") "wrap, span"]
+                                                 [(actions-to-panel (:trait thing)) "wrap, span"]
                                                  ]))
         ]
 

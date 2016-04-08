@@ -56,7 +56,13 @@
 
 (defn parse-other
   [info]
-  (into [] (map #(into {} %) (map #(map util/needs-better-name (util/group-by-tags %)) info))))
+  (into [] (map
+            #(into {} %)
+            (map
+             #(map util/needs-better-name (util/group-by-tags %))
+             info))
+        )
+  )
 
 (defn xml-from-file [file]
   (util/zip-str

@@ -1,6 +1,7 @@
 (ns dm-helper.files.utils
   (:gen-class)
   (:import [org.apache.commons.io FileUtils])
+  (:use [clojure.pprint])
   (:require [clojure.java.io :as io]
             [clojure.xml :as xml]
             [clojure.zip :as zip]
@@ -28,7 +29,6 @@
 
 (defn all-xml-from-dir [dirpath]
   (doall (filter (fn [n]
-                   ;; (println "file: " (.getName n) ", is xml: " (is-xml? (.getName n)))
                    (and
                     (not-russian? (.getPath n))
                     (is-xml? (.getName n))
@@ -56,14 +56,6 @@
   [t]
   (group-by :tag (:content t)))
 
-(defn fix-tag
-  [action]
-  (let [content (:content action)
-        ;; n (first (:content (first content)))
-        ;; text (first (:content (second content)))
-        test (into {} (map (fn [e] {(:tag e) (first(:content e))}) content))]
-    test))
-
 (defn newline-if-nil [content]
   (if (nil? (:content content)) "" (:content content)))
 
@@ -74,20 +66,21 @@
   ;; new map:  {:modifier charisma +1}
   [stat]
   (let [n (:tag stat)
-        c (:content stat)
-        content (first c)
-
-        test (into {} (if (not (-> c first string?))
+        content (:content stat)
+        test (into {} (if (not (-> content first string?))
                         (map (fn [e]
                                (let [name (first e)
                                      tags (first (rest e))
                                      content (string/join
                                               (map #(str (first %) "\n")
                                                    (map newline-if-nil tags)))]
+                                 (println n " - count content: " (count content) ", str?: " (string? content))
                                  {name content})
-                               ) (group-by :tag c))
+                               ) (group-by :tag content))
                         {n content}
                         ))]
+
+    (println "count content: " content " - " (count content) " \n\t\t " (second test) " - " (count (second test)))
 
     (if (not (= (first (keys test)) n))
       {n [test]}
@@ -98,10 +91,27 @@
   ""
   [thing]
   (let [name (first thing)
-        tags (second thing)]
+        tags (second thing)
+        t (string? (first (:content (first tags))))]
+
+    (println name " - tags: " (count (:content (first tags))) " - " t "\n")
+
+    (if (not t)
+      (let [argh (:content (first tags))]
+        (println "\n   wheeeeee" argh )
+
+        (println "blergh :" (into [] (map stat-to-map tags)))
+
+        (println  "\n\n")
+        )
+      )
+
     (if (= (count tags) 1)
       (stat-to-map (first tags))
-      {name (into [] (map fix-tag tags))})))
+      ;;{name (into [] (map stat-to-map tags))}
+      (into [] (map stat-to-map tags))
+      )
+    ))
 
 (defn also-needs-name
   ""
