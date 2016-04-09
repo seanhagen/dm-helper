@@ -59,8 +59,6 @@
   )
 
 (defn parser [thing]
-
-  (println "PARSER: " thing)
   (let [name (first thing)
         tags (second thing)
 
@@ -68,39 +66,48 @@
         types (distinct (map type (flatten content)))
         is-string (first (distinct (map string? (flatten content))))
         ]
-
-    (println "checking: " name)
-    (println "tags: " (count content))
-
     (if is-string
-      (do
-        (print "content: ")
-        (pprint (string/join (map
-                              #(string/join (if (nil? %) "\n" %))
-                              (flatten content)))))
+      {name (string/join (map
+                          #(string/join (if (nil? %) "\n" %))
+                          (flatten content)))}
 
-      (do
-        (print "content 2: ")
 
-        ;; (pprint content)
+      {name
+       (into []
+             (map
+              #(into {} (map
+                         (fn [h]
+                           (let [name (:tag h)
+                                 attr (:attrs h)
+                                 content (first (:content h))]
+                             {name content :attrs attr}))) %)
 
-        (pprint (flatten (map
-                          (fn [e]
-                            (map (fn [f]
-                                   ;;(println "f: " f)
-                                   (into f {:attrs (into (if (nil? (:attrs f)) {} (:attrs f)) (get-in e [:attrs]))}))
-                                 (:content e)
-                                 )
+              ;;(flatten)
+              (map
+               (fn [e]
+                 (map (fn [f]
+                        ;;(println "f: " f)
+                        (into f {:attrs (into (if (nil? (:attrs f)) {} (:attrs f)) (get-in e [:attrs]))}))
+                      (:content e)
+                      )
+                 )
+               tags)))}
+      )))
 
-                            )
+(defn parse-all [things]
+  (into []
+        (doall (map
 
-                          tags)))
+                (fn [e]
+                  (into {} (map parser (group-by :tag e)))
+                  )
 
-        )
-      )
+                (map
+                 (fn [e]
+                   (-> e :content ) ;;#(group-by :tag %)
+                   )
+                 things))))
 
-    (println "-------------\n\n")
-    )
   )
 
 (defn -main
@@ -119,42 +126,49 @@
   (let [xml (books/xml-from-file (io/resource "test.xml"))
         parts (group-by :tag (:content (first xml)))]
 
-    ;; (pprint
-    ;;  (map
-    ;;   (fn [e]
-    ;;     (let [test (:content e)]
-    ;;       (into {} (map test-parser (group-by :tag test)))
-    ;;       )
-    ;;     )
-    ;;   (:monster parts)))
-
-    (println "################# \n\t\tRACES\n#################\n")
-
-    (doall (map
-            parser
-            (group-by :tag (:content (first (:race parts))))
-            ))
-
-    (println "\n################# \n\t\tSPELLS\n#################\n")
-
-    (doall (map
-            parser
-            (group-by :tag (:content (first (:spell parts))))
-            ))
-
-    (println "\n################# \n\t\tCLASSES\n#################\n")
-
-    (doall (map
-            parser
-            (group-by :tag (:content (first (:class parts))))
-            ))
-
     (println "\n################# \n\t\tMONSTERS\n#################\n")
+    (pprint (parse-all (:monster parts)))
 
-    (doall (map
-            parser
-            (group-by :tag (:content (first (:monster parts))))
-            ))
+    ;; (println "################# \n\t\tRACES\n#################\n")
+
+    ;; (pprint
+    ;;  (into {}
+    ;;        (doall (map
+    ;;                parser
+    ;;                (group-by :tag (:content (first (:race parts))))))))
+
+    ;; (println "\n################# \n\t\tCLASSES\n#################\n")
+
+    ;; (pprint
+    ;;  (into {}
+    ;;        (doall (map
+    ;;                parser
+    ;;                (group-by :tag (:content (first (:class parts))))))))
+
+    ;; (println "\n################# \n\t\tSPELLS\n#################\n")
+
+    ;; (pprint
+    ;;  (into {}
+    ;;        (doall (map
+    ;;                parser
+    ;;                (group-by :tag (:content (first (:spell parts))))))))
+
+    ;; (println "\n################# \n\t\tMONSTERS\n#################\n")
+
+    ;; (pprint
+    ;;  (into {}
+    ;;        (doall (map
+    ;;                parser
+    ;;                (group-by :tag (:content (first (:monster parts))))))))
+
+
+
+    ;; (pprint
+    ;;  (into {}
+    ;;        (doall (map
+    ;;                parser
+    ;;                (group-by :tag (:content (second (:monster parts))))))))
+
 
     )
 

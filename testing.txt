@@ -1,1022 +1,133 @@
-################# 
-		RACES
-#################
-
-PARSER:  [:name [{:tag :name, :attrs nil, :content [Dwarf (Hill)]}]]
-checking:  :name
-tags:  1
-content: "Dwarf (Hill)"
--------------
-
-
-PARSER:  [:size [{:tag :size, :attrs nil, :content [M]}]]
-checking:  :size
-tags:  1
-content: "M"
--------------
-
-
-PARSER:  [:speed [{:tag :speed, :attrs nil, :content [25]}]]
-checking:  :speed
-tags:  1
-content: "25"
--------------
-
-
-PARSER:  [:ability [{:tag :ability, :attrs nil, :content [Con 2, Wis 1]}]]
-checking:  :ability
-tags:  1
-content: "Con 2, Wis 1"
--------------
-
-
-PARSER:  [:trait [{:tag :trait, :attrs nil, :content [{:tag :name, :attrs nil, :content [Darkvision]} {:tag :text, :attrs nil, :content [Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.]}]} {:tag :trait, :attrs nil, :content [{:tag :name, :attrs nil, :content [Dwarven Resilience]} {:tag :text, :attrs nil, :content [You have advantage on saving throws against poison, and you have resistance against poison damage.]}]} {:tag :trait, :attrs nil, :content [{:tag :name, :attrs nil, :content [Dwarven Combat Training]} {:tag :text, :attrs nil, :content [You have proficiency with the battleaxe, handaxe, light hammer, and warhammer.]}]} {:tag :trait, :attrs nil, :content [{:tag :name, :attrs nil, :content [Tool Proficiency]} {:tag :text, :attrs nil, :content [You gain proficiency with the artisan's tools of your choice: smith's tools, brewer's supplies, or mason's tools.]}]} {:tag :trait, :attrs nil, :content [{:tag :name, :attrs nil, :content [Stonecunning]} {:tag :text, :attrs nil, :content [Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus.]}]} {:tag :trait, :attrs nil, :content [{:tag :name, :attrs nil, :content [Languages]} {:tag :text, :attrs nil, :content [You can speak, read, and write Common and Dwarvish. Dwarvish is full of hard consonants and guttural sounds, and those characteristics spill over into whatever other language a dwarf might speak.]}]} {:tag :trait, :attrs nil, :content [{:tag :name, :attrs nil, :content [Dwarven Toughness]} {:tag :text, :attrs nil, :content [Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.]}]}]]
-checking:  :trait
-tags:  7
-content 2: ({:tag :name, :attrs {}, :content ["Darkvision"]}
- {:tag :text,
-  :attrs {},
-  :content
-  ["Accustomed to life underground, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."]}
- {:tag :name, :attrs {}, :content ["Dwarven Resilience"]}
- {:tag :text,
-  :attrs {},
-  :content
-  ["You have advantage on saving throws against poison, and you have resistance against poison damage."]}
- {:tag :name, :attrs {}, :content ["Dwarven Combat Training"]}
- {:tag :text,
-  :attrs {},
-  :content
-  ["You have proficiency with the battleaxe, handaxe, light hammer, and warhammer."]}
- {:tag :name, :attrs {}, :content ["Tool Proficiency"]}
- {:tag :text,
-  :attrs {},
-  :content
-  ["You gain proficiency with the artisan's tools of your choice: smith's tools, brewer's supplies, or mason's tools."]}
- {:tag :name, :attrs {}, :content ["Stonecunning"]}
- {:tag :text,
-  :attrs {},
-  :content
-  ["Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus."]}
- {:tag :name, :attrs {}, :content ["Languages"]}
- {:tag :text,
-  :attrs {},
-  :content
-  ["You can speak, read, and write Common and Dwarvish. Dwarvish is full of hard consonants and guttural sounds, and those characteristics spill over into whatever other language a dwarf might speak."]}
- {:tag :name, :attrs {}, :content ["Dwarven Toughness"]}
- {:tag :text,
-  :attrs {},
-  :content
-  ["Your hit point maximum increases by 1, and it increases by 1 every time you gain a level."]})
--------------
-
-
-
-################# 
-		SPELLS
-#################
-
-PARSER:  [:school [{:tag :school, :attrs nil, :content [EV]}]]
-checking:  :school
-tags:  1
-content: "EV"
--------------
-
-
-PARSER:  [:name [{:tag :name, :attrs nil, :content [Fireball]}]]
-checking:  :name
-tags:  1
-content: "Fireball"
--------------
-
-
-PARSER:  [:time [{:tag :time, :attrs nil, :content [1 action]}]]
-checking:  :time
-tags:  1
-content: "1 action"
--------------
-
-
-PARSER:  [:duration [{:tag :duration, :attrs nil, :content [Instantaneous]}]]
-checking:  :duration
-tags:  1
-content: "Instantaneous"
--------------
-
-
-PARSER:  [:level [{:tag :level, :attrs nil, :content [3]}]]
-checking:  :level
-tags:  1
-content: "3"
--------------
-
-
-PARSER:  [:components [{:tag :components, :attrs nil, :content [V, S, M (a tiny ball of bat guano and sulfur)]}]]
-checking:  :components
-tags:  1
-content: "V, S, M (a tiny ball of bat guano and sulfur)"
--------------
-
-
-PARSER:  [:roll [{:tag :roll, :attrs nil, :content [8d6]}]]
-checking:  :roll
-tags:  1
-content: "8d6"
--------------
-
-
-PARSER:  [:classes [{:tag :classes, :attrs nil, :content [Cleric (Light), Sorcerer, Warlock (Fiend), Wizard, Fighter (Eldritch Knight)]}]]
-checking:  :classes
-tags:  1
-content: "Cleric (Light), Sorcerer, Warlock (Fiend), Wizard, Fighter (Eldritch Knight)"
--------------
-
-
-PARSER:  [:range [{:tag :range, :attrs nil, :content [150 feet]}]]
-checking:  :range
-tags:  1
-content: "150 feet"
--------------
-
-
-PARSER:  [:text [{:tag :text, :attrs nil, :content [A bright streak flashes from your pointing finger to a point you choose within range then blossoms with a low roar into an explosion of flame. Each creature in a 20-foot radius must make a Dexterity saving throw. A target takes 8d6 fire damage on a failed save, or half as much damage on a successful one.]} {:tag :text, :attrs nil, :content nil} {:tag :text, :attrs nil, :content [The fire spreads around corners. It ignites flammable objects in the area that aren't being worn or carried.]} {:tag :text, :attrs nil, :content nil} {:tag :text, :attrs nil, :content [At Higher Levels: When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d6 for each slot level above 3rd.]}]]
-checking:  :text
-tags:  5
-content: "A bright streak flashes from your pointing finger to a point you choose within range then blossoms with a low roar into an explosion of flame. Each creature in a 20-foot radius must make a Dexterity saving throw. A target takes 8d6 fire damage on a failed save, or half as much damage on a successful one.\nThe fire spreads around corners. It ignites flammable objects in the area that aren't being worn or carried.\nAt Higher Levels: When you cast this spell using a spell slot of 4th level or higher, the damage increases by 1d6 for each slot level above 3rd."
--------------
-
-
-
-################# 
-		CLASSES
-#################
-
-PARSER:  [:name [{:tag :name, :attrs nil, :content [Bard]}]]
-checking:  :name
-tags:  1
-content: "Bard"
--------------
-
-
-PARSER:  [:hd [{:tag :hd, :attrs nil, :content [8]}]]
-checking:  :hd
-tags:  1
-content: "8"
--------------
-
-
-PARSER:  [:proficiency [{:tag :proficiency, :attrs nil, :content [Dexterity, Charisma]}]]
-checking:  :proficiency
-tags:  1
-content: "Dexterity, Charisma"
--------------
-
-
-PARSER:  [:spellAbility [{:tag :spellAbility, :attrs nil, :content [Charisma]}]]
-checking:  :spellAbility
-tags:  1
-content: "Charisma"
--------------
-
-
-PARSER:  [:autolevel [{:tag :autolevel, :attrs {:level 1}, :content [{:tag :slots, :attrs nil, :content [2,2,0,0,0,0,0,0,0,0]}]} {:tag :autolevel, :attrs {:level 2}, :content [{:tag :slots, :attrs nil, :content [2,3,0,0,0,0,0,0,0,0]}]} {:tag :autolevel, :attrs {:level 3}, :content [{:tag :slots, :attrs nil, :content [2,4,2,0,0,0,0,0,0,0]}]} {:tag :autolevel, :attrs {:level 4}, :content [{:tag :slots, :attrs nil, :content [3,4,3,0,0,0,0,0,0,0]}]} {:tag :autolevel, :attrs {:level 5}, :content [{:tag :slots, :attrs nil, :content [3,4,3,2,0,0,0,0,0,0]}]} {:tag :autolevel, :attrs {:level 6}, :content [{:tag :slots, :attrs nil, :content [3,4,3,3,0,0,0,0,0,0]}]} {:tag :autolevel, :attrs {:level 7}, :content [{:tag :slots, :attrs nil, :content [3,4,3,3,1,0,0,0,0,0]}]} {:tag :autolevel, :attrs {:level 8}, :content [{:tag :slots, :attrs nil, :content [3,4,3,3,2,0,0,0,0,0]}]} {:tag :autolevel, :attrs {:level 9}, :content [{:tag :slots, :attrs nil, :content [3,4,3,3,3,1,0,0,0,0]}]} {:tag :autolevel, :attrs {:level 10}, :content [{:tag :slots, :attrs nil, :content [4,4,3,3,3,2,0,0,0,0]}]} {:tag :autolevel, :attrs {:level 11}, :content [{:tag :slots, :attrs nil, :content [4,4,3,3,3,2,1,0,0,0]}]} {:tag :autolevel, :attrs {:level 12}, :content [{:tag :slots, :attrs nil, :content [4,4,3,3,3,2,1,0,0,0]}]} {:tag :autolevel, :attrs {:level 13}, :content [{:tag :slots, :attrs nil, :content [4,4,3,3,3,2,1,1,0,0]}]} {:tag :autolevel, :attrs {:level 14}, :content [{:tag :slots, :attrs nil, :content [4,4,3,3,3,2,1,1,0,0]}]} {:tag :autolevel, :attrs {:level 15}, :content [{:tag :slots, :attrs nil, :content [4,4,3,3,3,2,1,1,1,0]}]} {:tag :autolevel, :attrs {:level 16}, :content [{:tag :slots, :attrs nil, :content [4,4,3,3,3,2,1,1,1,0]}]} {:tag :autolevel, :attrs {:level 17}, :content [{:tag :slots, :attrs nil, :content [4,4,3,3,3,2,1,1,1,1]}]} {:tag :autolevel, :attrs {:level 18}, :content [{:tag :slots, :attrs nil, :content [4,4,3,3,3,3,1,1,1,1]}]} {:tag :autolevel, :attrs {:level 19}, :content [{:tag :slots, :attrs nil, :content [4,4,3,3,3,3,2,1,1,1]}]} {:tag :autolevel, :attrs {:level 20}, :content [{:tag :slots, :attrs nil, :content [4,4,3,3,3,3,2,2,1,1]}]} {:tag :autolevel, :attrs {:level 1}, :content [{:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Starting Proficiencies]} {:tag :text, :attrs nil, :content [You are proficient with the following items, in addition to any proficiencies provided by your race or background.]} {:tag :text, :attrs nil, :content [Armor: light armor]} {:tag :text, :attrs nil, :content [Weapons: simple weapons, hand crossbows, longswords, rapiers, shortswords]} {:tag :text, :attrs nil, :content [Tools: three musical instruments of your choice]} {:tag :text, :attrs nil, :content [Skills: Choose any three.]}]} {:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Starting Equipment]} {:tag :text, :attrs nil, :content [You start with the following items, plus anything provided by your background.]} {:tag :text, :attrs nil, :content nil} {:tag :text, :attrs nil, :content [• (a) a rapier, (b) a longsword, or (c) any simple weapon]} {:tag :text, :attrs nil, :content [• (a) a diplomat's pack or (b) an entertainer's pack]} {:tag :text, :attrs nil, :content [• (a) a lute or (b) any other musical instrument]} {:tag :text, :attrs nil, :content [• Leather armor, and a dagger]} {:tag :text, :attrs nil, :content nil} {:tag :text, :attrs nil, :content [Alternatively, you may start with 5d4 x 10 gp to buy your own equipment.]}]}]} {:tag :autolevel, :attrs {:level 1}, :content [{:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Bardic Inspiration]} {:tag :text, :attrs nil, :content [You can inspire others through stirring words or music. To do so, you use a bonus action on your turn to choose one creature other than yourself within 60 feet of you who can hear you. That creature gains one Bardic Inspiration die, a d6.]} {:tag :text, :attrs nil, :content [    Once within the next 10 minutes, the creature can roll the die and add the number rolled to one ability check, attack roll, or saving throw it makes. The creature can wait until after it rolls the d20 before deciding to use the Bardic Inspiration die, but must decide before the DM says whether the roll succeeds or fails. Once the Bardic Inspiration die is rolled, it is lost. A creature can have only one Bardic Inspiration die at a time.]} {:tag :text, :attrs nil, :content [    You can use this feature a number of times equal to your Charisma modifier (a minimum of once). You regain any expended uses when you finish a long rest.]} {:tag :text, :attrs nil, :content [    Your Bardic Inspiration die changes when you reach certain levels in this class. The die becomes a d8 at 5th level, a d10 at 10th level, and a d12 at 15th level.]}]} {:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Spellcasting]} {:tag :text, :attrs nil, :content [You have learned to untangle and reshape the fabric of reality in harmony with your wishes and music. Your spells are part of your vast repertoire, magic that you can tune to different situations. See chapter 10 for the general rules of spellcasting and chapter 11 for the bard spell list.]} {:tag :text, :attrs nil, :content nil} {:tag :text, :attrs nil, :content [Cantrips]} {:tag :text, :attrs nil, :content [You know two cantrips of your choice from the bard spell list. You learn additional bard cantrips of your choice at higher levels, learning a 3rd cantrip at 4th level and a 4th at 10th level.]} {:tag :text, :attrs nil, :content nil} {:tag :text, :attrs nil, :content [Spell Slots]} {:tag :text, :attrs nil, :content [The Bard table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.]} {:tag :text, :attrs nil, :content [    For example, if you know the 1st-level spell cure wounds and have a 1st-level and a 2nd-level spell slot available, you can cast cure wounds using either slot.]} {:tag :text, :attrs nil, :content nil} {:tag :text, :attrs nil, :content [Spells Known of 1st Level and Higher]} {:tag :text, :attrs nil, :content [You know four 1st-level spells of your choice from the bard spell list.]} {:tag :text, :attrs nil, :content [    You learn an additional bard spell of your choice at each level except 12th, 16th, 19th, and 20th. Each of these spells must be of a level for which you have spell slots. For instance, when you reach 3rd level in this class, you can learn one new spell of 1st or 2nd level.]} {:tag :text, :attrs nil, :content [    Additionally, when you gain a level in this class, you can choose one of the bard spells you know and replace it with another spell from the bard spell list, which also must be of a level for which you have spell slots.]} {:tag :text, :attrs nil, :content nil} {:tag :text, :attrs nil, :content [Spellcasting Ability]} {:tag :text, :attrs nil, :content [Charisma is your spellcasting ability for your bard spells. Your magic comes from the heart and soul you pour into the performance of your music or oration. You use your Charisma whenever a spell refers to your spellcasting ability. In addition, you use your Charisma modifier when setting the saving throw DC for a bard spell you cast and when making an attack roll with one.]} {:tag :text, :attrs nil, :content [    Spell save DC = 8 + your proficiency bonus + your Charisma modifier]} {:tag :text, :attrs nil, :content [    Spell attack modifier = your proficiency bonus + your Charisma modifier]} {:tag :text, :attrs nil, :content nil} {:tag :text, :attrs nil, :content [Ritual Casting]} {:tag :text, :attrs nil, :content [You can cast any bard spell you know as a ritual if that spell has the ritual tag.]} {:tag :text, :attrs nil, :content nil} {:tag :text, :attrs nil, :content [Spellcasting Focus]} {:tag :text, :attrs nil, :content [You can use a musical instrument (found in chapter 5) as a spellcasting focus for your bard spells.]}]}]} {:tag :autolevel, :attrs {:level 2}, :content [{:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Jack of All Trades]} {:tag :text, :attrs nil, :content [Starting at 2nd level, you can add half your proficiency bonus, rounded down, to any ability check you make that doesn't already include your proficiency bonus.]}]}]} {:tag :autolevel, :attrs {:level 2}, :content [{:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Song of Rest]} {:tag :text, :attrs nil, :content [Beginning at 2nd level, you can use soothing music or oration to help revitalize your wounded allies during a short rest. If you or any friendly creatures who can hear your performance regain hit points by spending Hit Dice at the end of the short rest, each of those creatures regains an extra 1d6 hit points.]} {:tag :text, :attrs nil, :content [    The extra hit points increase when you reach certain levels in this class: to 1d8 at 9th level, to 1d10 at 13th level, and to 1d12 at 17th level.]}]}]} {:tag :autolevel, :attrs {:level 3}, :content [{:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Bard College]} {:tag :text, :attrs nil, :content [At 3rd level, you delve into the advanced techniques of a bard college of your choice: the College of Lore or the College of Valor, both detailed at the end of the class description. Your choice grants you features at 3rd level and again at 6th and 14th level.]}]} {:tag :feature, :attrs {:optional YES}, :content [{:tag :name, :attrs nil, :content [Bard College: College of Lore]} {:tag :text, :attrs nil, :content [Bards of the College of Lore know something about most things, collecting bits of knowledge from sources as diverse as scholarly tomes and peasant tales. Whether singing folk ballads in taverns or elaborate compositions in royal courts, these bards use their gifts to hold audiences spellbound. When the applause dies down, the audience members might find themselves questioning everything they held to be true, from their faith in the priesthood of the local temple to their loyalty to the king.]} {:tag :text, :attrs nil, :content nil} {:tag :text, :attrs nil, :content [The loyalty of these bards lies in the pursuit of beauty and truth, not in fealty to a monarch or following the tenets of a deity. A noble who keeps such a bard as a herald or advisor knows that the bard would rather be honest than politic.]} {:tag :text, :attrs nil, :content nil} {:tag :text, :attrs nil, :content [The college's members gather in libraries and sometimes in actual colleges, complete with classrooms and dormitories, to share their lore with one another. They also meet at festivals or affairs of state, where they can expose corruption, unravel lies, and poke fun at self-important figures of authority.]}]} {:tag :feature, :attrs {:optional YES}, :content [{:tag :name, :attrs nil, :content [Bard College: College of Valor]} {:tag :text, :attrs nil, :content [Bards of the College of Lore know something about most things, collecting bits of knowledge from sources as diverse as scholarly tomes and peasant tales. Whether singing folk ballads in taverns or elaborate]} {:tag :text, :attrs nil, :content nil} {:tag :text, :attrs nil, :content [Bards of the College of Valor are daring skalds whose tales keep alive the memory of the great heroes of the past, and thereby inspire a new generation of heroes. These bards gather in mead halls or around great bonfires to sing the deeds of the mighty, both past and present. They travel the land to witness great events firsthand and to ensure that the memory of those events doesn't pass from the world. With their songs, they inspire others to reach the same heights of accomplishment as the heroes of old.]}]} {:tag :feature, :attrs {:optional YES}, :content [{:tag :name, :attrs nil, :content [Bard College: College of Swords]} {:tag :text, :attrs nil, :content [Bards of the College of Swords are called blades, and they entertain through daring feats of weapon prowess. Blades perform stunts such as sword swallowing, knife throwing and juggling, and mock combats. But though they use their weapons to entertain, they are also highly trained and skilled warriors in their own right.]} {:tag :text, :attrs nil, :content [Their talent with weapons inspires many blades to lead double lives. One blade might use a circus troupe as cover for nefarious deeds such as assassination, robbery, and blackmail. Other blades strike at the wicked, bringing justice to bear against the cruel and powerful. Most troupes are happy to accept a blade’s talent for the excitement it adds to a performance, but few entertainers fully trust them.]} {:tag :text, :attrs nil, :content [Blades who abandon lives as entertainers have often run into trouble that makes maintaining their secret activities impossible. A blade caught stealing or engaging in vigilante justice is too great a liability for most performer troupes. With their weapon skills as their greatest asset, these blades either take up work as enforcers for thieves’ guilds or strike out on their own as adventurers.]}]} {:tag :feature, :attrs {:optional YES}, :content [{:tag :name, :attrs nil, :content [Bard College: College of Satire]} {:tag :text, :attrs nil, :content [Bards of the College of Satire are called jesters. They use lowbrow stories, daring acrobatics, and cutting jokes to entertain audiences, ranging from the crowds in a rundown dockside pub to the nobles of a king’s royal court. Where other bards seek forgotten lore or tales of epic bravery, jesters ferret out embarrassing and hilarious stories of all kinds. Whether telling the ribald tale of a brawny stable hand’s affair with an aged duchess or a mocking satire of a paladin of Helm’s cloying innocence, a jester never lets taste, social decorum, or shame get in the way of a good laugh.]} {:tag :text, :attrs nil, :content [While jesters are masters of puns, jokes, and verbal barbs, they are much more than just comic relief. They are expected to mock and provoke, taking advantage of how even the most powerful folk are expected by tradition to endure a jester’s barbs with good humor. This expectation allows a jester to serve as a critic or a voice of reason when others are too intimidated to speak the truth.]} {:tag :text, :attrs nil, :content [For the duchess with a taste for strapping young laborers, such tales might serve to warn the targets of her affections and force her to change her ways for lack of willing partners. Striking back at the jester only ruins her already damaged reputation, and might provide the best evidencethat the jester’s satires have hit their mark. But if she is kind and generous to her conquests, the jokes and stories cast her as a kind of folk hero, while drawing even more potential partners to her.]} {:tag :text, :attrs nil, :content [Jesters are loyal to only one cause: the pursuit and propagation of the truth. They use their comedy and innocuous appearance to break down social barriers and expose corruption, incompetence, and stupidity among the rich and powerful. Whether revealing a con artist’s treachery or exposing a baron’s plans for war as driven by greed and bloodlust, a jester serves as the conscience of a realm.]} {:tag :text, :attrs nil, :content [Jesters adventure to safeguard the common folk and to undermine the plans of the rich, powerful, and arrogant. Their magic bolsters allies’ spirits while casting doubt into foes’ minds. Among bards, jesters are unmatched acrobats, and their ability to tumble, dodge, leap, and climb makes them slippery opponents in battle.]}]} {:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Expertise]} {:tag :text, :attrs nil, :content [At 3rd level, choose two of your skill proficiencies. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies.]} {:tag :text, :attrs nil, :content [    At 10th level, you can choose another two skill proficiencies to gain this benefit.]}]} {:tag :feature, :attrs {:optional YES}, :content [{:tag :name, :attrs nil, :content [College of Lore: Bonus Proficiencies]} {:tag :text, :attrs nil, :content [When you join the College of Lore at 3rd level, you gain proficiency with three skills of your choice.]}]} {:tag :feature, :attrs {:optional YES}, :content [{:tag :name, :attrs nil, :content [College of Lore: Cutting Words]} {:tag :text, :attrs nil, :content [Also at 3rd level, you learn how to use your wit to distract, confuse, and otherwise sap the confidence and competence of others. When a creature that you can see within 60 feet of you makes an attack roll, an ability check, or a damage roll, you can use your reaction to expend one of your uses of Bardic Inspiration, rolling a Bardic Inspiration die and subtracting the number rolled from the creature's roll. You can choose to use this feature after the creature makes its roll, but before the DM determines whether the attack roll or ability check succeeds or fails, or before the creature deals its damage. The creature is immune if it can't hear you or if it's immune to being charmed.]}]} {:tag :feature, :attrs {:optional YES}, :content [{:tag :name, :attrs nil, :content [College of Satire: Bonus Proficiencies]} {:tag :text, :attrs nil, :content [When you join the College of Satire at 3rd level, you gain proficiency with thieves' tools. You also gain proficiency in Sleight of Hand and one additional skill of your choice. If you are already proficient with thieves' tools or in Sleight of Hand, choose another skill proficiency for each proficiency you already have.]}]} {:tag :feature, :attrs {:optional YES}, :content [{:tag :name, :attrs nil, :content [College of Satire: Tumbling Fool]} {:tag :text, :attrs nil, :content [At 3rd level, you master a variety of acrobatic techniques that allow you to evade danger. As a bonus action, you can tumble. When you tumble, you gain the following benefits for the rest of your turn:]} {:tag :text, :attrs nil, :content nil} {:tag :text, :attrs nil, :content [• You gain the benefits of taking the Dash and Disengage actions.]} {:tag :text, :attrs nil, :content nil} {:tag :text, :attrs nil, :content [• You gain a climbing speed equal to your current speed.]} {:tag :text, :attrs nil, :content nil} {:tag :text, :attrs nil, :content [• You take half damage from falling.]}]} {:tag :feature, :attrs {:optional YES}, :content [{:tag :name, :attrs nil, :content [College of Swords: Bonus Proficiencies]} {:tag :text, :attrs nil, :content [When you join the College of Blades at 3rd level, you gain proficiency with medium armor and with scimitars.]}]} {:tag :feature, :attrs {:optional YES}, :content [{:tag :name, :attrs nil, :content [College of Swords: Fighting Style]} {:tag :text, :attrs nil, :content [The College of Blades emphasizes mastery with weapons, granting you access to the two-weapon fighting option for the Fighting Style class feature, which is as follows.]} {:tag :text, :attrs nil, :content [When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack.]}]} {:tag :feature, :attrs {:optional YES}, :content [{:tag :name, :attrs nil, :content [College of Swords: Blade Flourish]} {:tag :text, :attrs nil, :content [At 3rd level, you learn to conduct impressive displays of skill with your weapons. When you use the Attack action on your turn and attack with a dagger, longsword, rapier, scimitar, or shortsword, you can attempt one of the following flourishes.]} {:tag :text, :attrs nil, :content nil} {:tag :text, :attrs nil, :content [	Defensive Flourish:]} {:tag :text, :attrs nil, :content [You spin your weapon around you in swift circles, creating a hypnotic display. As a bonus action, you expend one use of Bardic Inspiration, rolling a Bardic Inspiration die and applying the number rolled as a bonus to your AC until the start of your next turn.]} {:tag :text, :attrs nil, :content nil} {:tag :text, :attrs nil, :content [	Trick Shooter's Flourish:]} {:tag :text, :attrs nil, :content [This favorite trick of knife throwers allows you to expend one use of Bardic Inspiration as a bonus action. Roll a Bardic Inspiration die and apply the number rolled as a bonus to the next ranged attack roll you make with a dagger this turn. If the target of the attack is an unattended, inanimate object, the bonus equals double the die roll.]} {:tag :text, :attrs nil, :content nil} {:tag :text, :attrs nil, :content [	Unnerving Flourish:]} {:tag :text, :attrs nil, :content [Your deadly display of combat prowess unnerves your opponents, leaving them cowering in fear and at your mercy. Whenever you reduce a creature to 0 hit points with a melee attack, you can use a bonus action to expend one use of Bardic Inspiration, and instead leave the creature at 1 hit point.]} {:tag :text, :attrs nil, :content [The creature is frightened of you for a number of minutes equal to your Charisma modifier. It must also make a Charisma saving throw with a DC equal to your spellcasting DC + a bonus equal to the roll of your Bardic Inspiration die. If the creature fails this saving throw, it answers truthfully any questions you ask it and obeys your direct orders while it is frightened by this effect.]}]} {:tag :feature, :attrs {:optional YES}, :content [{:tag :name, :attrs nil, :content [College of Valor: Bonus Proficiencies]} {:tag :text, :attrs nil, :content [When you join the College of Valor at 3rd level, you gain proficiency with medium armor, shields, and martial weapons.]}]} {:tag :feature, :attrs {:optional YES}, :content [{:tag :name, :attrs nil, :content [College of Valor: Combat Inspiration]} {:tag :text, :attrs nil, :content [Also at 3rd level, you learn to inspire others in battle. A creature that has a Bardic Inspiration die from you can roll that die and add the number rolled to a weapon damage roll it just made. Alternatively, when an attack roll is made against the creature, it can use its reaction to roll the Bardic Inspiration die and add the number rolled to its AC against that attack, after seeing the roll but before knowing whether it hits or misses.]}]}]} {:tag :autolevel, :attrs {:level 4}, :content [{:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Ability Score Improvement]} {:tag :text, :attrs nil, :content [When you reach 4th level you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.]} {:tag :text, :attrs nil, :content [    If your DM allows the use of feats, you may instead take a feat.]}]}]} {:tag :autolevel, :attrs {:level 5}, :content [{:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Bardic Inspiration (d8)]} {:tag :text, :attrs nil, :content [At 5th level, your Bardic Inspiration die changes to a d8.]}]} {:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Font of Inspiration]} {:tag :text, :attrs nil, :content [Beginning when you reach 5th level, you regain all of your expended uses of Bardic Inspiration when you finish a short or long rest.]}]}]} {:tag :autolevel, :attrs {:level 6}, :content [{:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Countercharm]} {:tag :text, :attrs nil, :content [At 6th level, you gain the ability to use musical notes or words of power to disrupt mind-influencing effects. As an action, you can start a performance that lasts until the end of your next turn. During that time, you and any friendly creatures within 30 feet of you have advantage on saving throws against being frightened or charmed. A creature must be able to hear you to gain this benefit. The performance ends early if you are incapacitated or silenced or if you voluntarily end it (no action required).]}]} {:tag :feature, :attrs {:optional YES}, :content [{:tag :name, :attrs nil, :content [College of Satire: Fool's Insight]} {:tag :text, :attrs nil, :content [At 6th level, your ability to gather stories and lore gains a supernatural edge. You can cast detect thoughts up to a number of times equal to your Charisma modifier. You regain any expended uses of this ability after completing a long rest.]} {:tag :text, :attrs nil, :content [	If a creature resists your attempt to probe deeper and succeeds at its saving throw against your detect thoughts, it immediately suffers an embarrassing social gaffe. It might loudly pass gas, unleash a thunderous burp, trip and fall, or be compelled to tell a tasteless joke.]}]} {:tag :feature, :attrs {:optional YES}, :content [{:tag :name, :attrs nil, :content [College of Swords: Extra Attack]} {:tag :text, :attrs nil, :content [Beginning at 6th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.]}]} {:tag :feature, :attrs {:optional YES}, :content [{:tag :name, :attrs nil, :content [College of Lore: Additional Magical Secrets]} {:tag :text, :attrs nil, :content [At 6th level, you learn two spells of your choice from any class. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip. The chosen spells count as bard spells for you but don't count against the number of bard spells you know.]}]} {:tag :feature, :attrs {:optional YES}, :content [{:tag :name, :attrs nil, :content [College of Valor: Extra Attack]} {:tag :text, :attrs nil, :content [Starting at 6th level, you can attack twice, instead of once, whenever you take the Attack action on your turn.]}]}]} {:tag :autolevel, :attrs {:level 8}, :content [{:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Ability Score Improvement]} {:tag :text, :attrs nil, :content [When you reach 8th level you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.]} {:tag :text, :attrs nil, :content [    If your DM allows the use of feats, you may instead take a feat.]}]}]} {:tag :autolevel, :attrs {:level 9}, :content [{:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Song of Rest (1d8)]} {:tag :text, :attrs nil, :content [At 9th level, the extra hit points gained from Song of Rest increases to 1d8.]}]}]} {:tag :autolevel, :attrs {:level 10}, :content [{:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Bardic Inspiration (d10)]} {:tag :text, :attrs nil, :content [At 10th level, your Bardic Inspiration die changes to a d10.]}]} {:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Expertise]} {:tag :text, :attrs nil, :content [At 10th level, you can choose another two skill proficiencies. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies.]}]} {:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Magical Secrets]} {:tag :text, :attrs nil, :content [By 10th level, you have plundered magical knowledge from a wide spectrum of disciplines. Choose two spells from any class, including this one. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip.]} {:tag :text, :attrs nil, :content [    The chosen spells count as bard spells for you and are included in the number in the Spells Known column of the Bard table.]} {:tag :text, :attrs nil, :content [    You learn two additional spells from any class at 14th level and again at 18th level.]}]}]} {:tag :autolevel, :attrs {:level 12}, :content [{:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Ability Score Improvement]} {:tag :text, :attrs nil, :content [When you reach 12th level you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.]} {:tag :text, :attrs nil, :content [    If your DM allows the use of feats, you may instead take a feat.]}]}]} {:tag :autolevel, :attrs {:level 13}, :content [{:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Song of Rest (1d10)]} {:tag :text, :attrs nil, :content [At 13th level, the extra hit points gained from Song of Rest increases to 1d10.]}]}]} {:tag :autolevel, :attrs {:level 14}, :content [{:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Magical Secrets]} {:tag :text, :attrs nil, :content [At 14th level, choose two additional spells from any class, including this one. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip.]} {:tag :text, :attrs nil, :content [    The chosen spells count as bard spells for you and are included in the number in the Spells Known column of the Bard table.]}]} {:tag :feature, :attrs {:optional YES}, :content [{:tag :name, :attrs nil, :content [College of Satire: Fool's Luck ]} {:tag :text, :attrs nil, :content [Jesters seem to have a knack for pulling themselves out of tight situations, transforming what looks like sure failure into an embarrassing but effective success.]} {:tag :text, :attrs nil, :content [	At 14th level, you can expend one use of Bardic Inspiration after you fail an ability check, fail a saving throw, or miss with an attack roll. Roll a Bardic Inspiration die and add the number rolled to your attack, saving throw, or ability check, using the new result in place of the failed one.]} {:tag :text, :attrs nil, :content [	If using this ability grants you a success on the attack, saving throw, or ability check, note the number you rolled on the Bardic Inspiration die. The DM can then apply that result as a penalty to an attack or check you make, and you cannot use this ability again until you suffer this drawback. When the DM invokes this penalty, describe an embarrassing gaffe or mistake you make as part of the affected die roll.]}]} {:tag :feature, :attrs {:optional YES}, :content [{:tag :name, :attrs nil, :content [College of Swords: Battle Magic]} {:tag :text, :attrs nil, :content [At 14th level, you have mastered the art of weaving spellcasting and weapon use into a single harmonious act. When you use your action to cast a bard spell, you can make one weapon attack as a bonus action.]}]} {:tag :feature, :attrs {:optional YES}, :content [{:tag :name, :attrs nil, :content [College of Lore: Peerless Skill]} {:tag :text, :attrs nil, :content [Starting at 14th level, when you make an ability check, you can expend one use of Bardic Inspiration. Roll a Bardic Inspiration die and add the number rolled to your ability check. You can choose to do so after you roil the die for the ability check, but before the DM tells you whether you succeed or fail.]}]} {:tag :feature, :attrs {:optional YES}, :content [{:tag :name, :attrs nil, :content [College of Valor: Battle Magic]} {:tag :text, :attrs nil, :content [At 14th level, you have mastered the art of weaving spellcasting and weapon use into a single harmonious act. When you use your action to cast a bard spell, you can make one weapon attack as a bonus action.]}]}]} {:tag :autolevel, :attrs {:level 15}, :content [{:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Bardic Inspiration (d12)]} {:tag :text, :attrs nil, :content [At 15th level, your Bardic Inspiration die changes to a d12.]}]}]} {:tag :autolevel, :attrs {:level 16}, :content [{:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Ability Score Improvement]} {:tag :text, :attrs nil, :content [When you reach 16th level you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.]} {:tag :text, :attrs nil, :content [    If your DM allows the use of feats, you may instead take a feat.]}]}]} {:tag :autolevel, :attrs {:level 17}, :content [{:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Song of Rest (1d12)]} {:tag :text, :attrs nil, :content [At 17th level, the extra hit points gained from Song of Rest increases to 1d12.]}]}]} {:tag :autolevel, :attrs {:level 18}, :content [{:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Magical Secrets]} {:tag :text, :attrs nil, :content [At 18th level, choose two additional spells from any class, including this one. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip.]} {:tag :text, :attrs nil, :content [    The chosen spells count as bard spells for you and are included in the number in the Spells Known column of the Bard table.]}]}]} {:tag :autolevel, :attrs {:level 19}, :content [{:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Ability Score Improvement]} {:tag :text, :attrs nil, :content [When you reach 19th level you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature.]} {:tag :text, :attrs nil, :content [    If your DM allows the use of feats, you may instead take a feat.]}]}]} {:tag :autolevel, :attrs {:level 20}, :content [{:tag :feature, :attrs nil, :content [{:tag :name, :attrs nil, :content [Superior Inspiration]} {:tag :text, :attrs nil, :content [At 20th level, when you roll initiative and have no uses of Bardic Inspiration left, you regain one use.]}]}]}]]
-checking:  :autolevel
-tags:  40
-content 2: ({:tag :slots, :attrs {:level "1"}, :content ["2,2,0,0,0,0,0,0,0,0"]}
- {:tag :slots, :attrs {:level "2"}, :content ["2,3,0,0,0,0,0,0,0,0"]}
- {:tag :slots, :attrs {:level "3"}, :content ["2,4,2,0,0,0,0,0,0,0"]}
- {:tag :slots, :attrs {:level "4"}, :content ["3,4,3,0,0,0,0,0,0,0"]}
- {:tag :slots, :attrs {:level "5"}, :content ["3,4,3,2,0,0,0,0,0,0"]}
- {:tag :slots, :attrs {:level "6"}, :content ["3,4,3,3,0,0,0,0,0,0"]}
- {:tag :slots, :attrs {:level "7"}, :content ["3,4,3,3,1,0,0,0,0,0"]}
- {:tag :slots, :attrs {:level "8"}, :content ["3,4,3,3,2,0,0,0,0,0"]}
- {:tag :slots, :attrs {:level "9"}, :content ["3,4,3,3,3,1,0,0,0,0"]}
- {:tag :slots, :attrs {:level "10"}, :content ["4,4,3,3,3,2,0,0,0,0"]}
- {:tag :slots, :attrs {:level "11"}, :content ["4,4,3,3,3,2,1,0,0,0"]}
- {:tag :slots, :attrs {:level "12"}, :content ["4,4,3,3,3,2,1,0,0,0"]}
- {:tag :slots, :attrs {:level "13"}, :content ["4,4,3,3,3,2,1,1,0,0"]}
- {:tag :slots, :attrs {:level "14"}, :content ["4,4,3,3,3,2,1,1,0,0"]}
- {:tag :slots, :attrs {:level "15"}, :content ["4,4,3,3,3,2,1,1,1,0"]}
- {:tag :slots, :attrs {:level "16"}, :content ["4,4,3,3,3,2,1,1,1,0"]}
- {:tag :slots, :attrs {:level "17"}, :content ["4,4,3,3,3,2,1,1,1,1"]}
- {:tag :slots, :attrs {:level "18"}, :content ["4,4,3,3,3,3,1,1,1,1"]}
- {:tag :slots, :attrs {:level "19"}, :content ["4,4,3,3,3,3,2,1,1,1"]}
- {:tag :slots, :attrs {:level "20"}, :content ["4,4,3,3,3,3,2,2,1,1"]}
- {:tag :feature,
-  :attrs {:level "1"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Starting Proficiencies"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["You are proficient with the following items, in addition to any proficiencies provided by your race or background."]}
-   {:tag :text, :attrs nil, :content ["Armor: light armor"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["Weapons: simple weapons, hand crossbows, longswords, rapiers, shortswords"]}
-   {:tag :text,
-    :attrs nil,
-    :content ["Tools: three musical instruments of your choice"]}
-   {:tag :text, :attrs nil, :content ["Skills: Choose any three."]}]}
- {:tag :feature,
-  :attrs {:level "1"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Starting Equipment"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["You start with the following items, plus anything provided by your background."]}
-   {:tag :text, :attrs nil, :content nil}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["• (a) a rapier, (b) a longsword, or (c) any simple weapon"]}
-   {:tag :text,
-    :attrs nil,
-    :content ["• (a) a diplomat's pack or (b) an entertainer's pack"]}
-   {:tag :text,
-    :attrs nil,
-    :content ["• (a) a lute or (b) any other musical instrument"]}
-   {:tag :text, :attrs nil, :content ["• Leather armor, and a dagger"]}
-   {:tag :text, :attrs nil, :content nil}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["Alternatively, you may start with 5d4 x 10 gp to buy your own equipment."]}]}
- {:tag :feature,
-  :attrs {:level "1"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Bardic Inspiration"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["You can inspire others through stirring words or music. To do so, you use a bonus action on your turn to choose one creature other than yourself within 60 feet of you who can hear you. That creature gains one Bardic Inspiration die, a d6."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["    Once within the next 10 minutes, the creature can roll the die and add the number rolled to one ability check, attack roll, or saving throw it makes. The creature can wait until after it rolls the d20 before deciding to use the Bardic Inspiration die, but must decide before the DM says whether the roll succeeds or fails. Once the Bardic Inspiration die is rolled, it is lost. A creature can have only one Bardic Inspiration die at a time."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["    You can use this feature a number of times equal to your Charisma modifier (a minimum of once). You regain any expended uses when you finish a long rest."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["    Your Bardic Inspiration die changes when you reach certain levels in this class. The die becomes a d8 at 5th level, a d10 at 10th level, and a d12 at 15th level."]}]}
- {:tag :feature,
-  :attrs {:level "1"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Spellcasting"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["You have learned to untangle and reshape the fabric of reality in harmony with your wishes and music. Your spells are part of your vast repertoire, magic that you can tune to different situations. See chapter 10 for the general rules of spellcasting and chapter 11 for the bard spell list."]}
-   {:tag :text, :attrs nil, :content nil}
-   {:tag :text, :attrs nil, :content ["Cantrips"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["You know two cantrips of your choice from the bard spell list. You learn additional bard cantrips of your choice at higher levels, learning a 3rd cantrip at 4th level and a 4th at 10th level."]}
-   {:tag :text, :attrs nil, :content nil}
-   {:tag :text, :attrs nil, :content ["Spell Slots"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["The Bard table shows how many spell slots you have to cast your spells of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["    For example, if you know the 1st-level spell cure wounds and have a 1st-level and a 2nd-level spell slot available, you can cast cure wounds using either slot."]}
-   {:tag :text, :attrs nil, :content nil}
-   {:tag :text,
-    :attrs nil,
-    :content ["Spells Known of 1st Level and Higher"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["You know four 1st-level spells of your choice from the bard spell list."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["    You learn an additional bard spell of your choice at each level except 12th, 16th, 19th, and 20th. Each of these spells must be of a level for which you have spell slots. For instance, when you reach 3rd level in this class, you can learn one new spell of 1st or 2nd level."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["    Additionally, when you gain a level in this class, you can choose one of the bard spells you know and replace it with another spell from the bard spell list, which also must be of a level for which you have spell slots."]}
-   {:tag :text, :attrs nil, :content nil}
-   {:tag :text, :attrs nil, :content ["Spellcasting Ability"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["Charisma is your spellcasting ability for your bard spells. Your magic comes from the heart and soul you pour into the performance of your music or oration. You use your Charisma whenever a spell refers to your spellcasting ability. In addition, you use your Charisma modifier when setting the saving throw DC for a bard spell you cast and when making an attack roll with one."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["    Spell save DC = 8 + your proficiency bonus + your Charisma modifier"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["    Spell attack modifier = your proficiency bonus + your Charisma modifier"]}
-   {:tag :text, :attrs nil, :content nil}
-   {:tag :text, :attrs nil, :content ["Ritual Casting"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["You can cast any bard spell you know as a ritual if that spell has the ritual tag."]}
-   {:tag :text, :attrs nil, :content nil}
-   {:tag :text, :attrs nil, :content ["Spellcasting Focus"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["You can use a musical instrument (found in chapter 5) as a spellcasting focus for your bard spells."]}]}
- {:tag :feature,
-  :attrs {:level "2"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Jack of All Trades"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["Starting at 2nd level, you can add half your proficiency bonus, rounded down, to any ability check you make that doesn't already include your proficiency bonus."]}]}
- {:tag :feature,
-  :attrs {:level "2"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Song of Rest"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["Beginning at 2nd level, you can use soothing music or oration to help revitalize your wounded allies during a short rest. If you or any friendly creatures who can hear your performance regain hit points by spending Hit Dice at the end of the short rest, each of those creatures regains an extra 1d6 hit points."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["    The extra hit points increase when you reach certain levels in this class: to 1d8 at 9th level, to 1d10 at 13th level, and to 1d12 at 17th level."]}]}
- {:tag :feature,
-  :attrs {:level "3"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Bard College"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["At 3rd level, you delve into the advanced techniques of a bard college of your choice: the College of Lore or the College of Valor, both detailed at the end of the class description. Your choice grants you features at 3rd level and again at 6th and 14th level."]}]}
- {:tag :feature,
-  :attrs {:optional "YES", :level "3"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Bard College: College of Lore"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["Bards of the College of Lore know something about most things, collecting bits of knowledge from sources as diverse as scholarly tomes and peasant tales. Whether singing folk ballads in taverns or elaborate compositions in royal courts, these bards use their gifts to hold audiences spellbound. When the applause dies down, the audience members might find themselves questioning everything they held to be true, from their faith in the priesthood of the local temple to their loyalty to the king."]}
-   {:tag :text, :attrs nil, :content nil}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["The loyalty of these bards lies in the pursuit of beauty and truth, not in fealty to a monarch or following the tenets of a deity. A noble who keeps such a bard as a herald or advisor knows that the bard would rather be honest than politic."]}
-   {:tag :text, :attrs nil, :content nil}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["The college's members gather in libraries and sometimes in actual colleges, complete with classrooms and dormitories, to share their lore with one another. They also meet at festivals or affairs of state, where they can expose corruption, unravel lies, and poke fun at self-important figures of authority."]}]}
- {:tag :feature,
-  :attrs {:optional "YES", :level "3"},
-  :content
-  [{:tag :name,
-    :attrs nil,
-    :content ["Bard College: College of Valor"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["Bards of the College of Lore know something about most things, collecting bits of knowledge from sources as diverse as scholarly tomes and peasant tales. Whether singing folk ballads in taverns or elaborate"]}
-   {:tag :text, :attrs nil, :content nil}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["Bards of the College of Valor are daring skalds whose tales keep alive the memory of the great heroes of the past, and thereby inspire a new generation of heroes. These bards gather in mead halls or around great bonfires to sing the deeds of the mighty, both past and present. They travel the land to witness great events firsthand and to ensure that the memory of those events doesn't pass from the world. With their songs, they inspire others to reach the same heights of accomplishment as the heroes of old."]}]}
- {:tag :feature,
-  :attrs {:optional "YES", :level "3"},
-  :content
-  [{:tag :name,
-    :attrs nil,
-    :content ["Bard College: College of Swords"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["Bards of the College of Swords are called blades, and they entertain through daring feats of weapon prowess. Blades perform stunts such as sword swallowing, knife throwing and juggling, and mock combats. But though they use their weapons to entertain, they are also highly trained and skilled warriors in their own right."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["Their talent with weapons inspires many blades to lead double lives. One blade might use a circus troupe as cover for nefarious deeds such as assassination, robbery, and blackmail. Other blades strike at the wicked, bringing justice to bear against the cruel and powerful. Most troupes are happy to accept a blade’s talent for the excitement it adds to a performance, but few entertainers fully trust them."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["Blades who abandon lives as entertainers have often run into trouble that makes maintaining their secret activities impossible. A blade caught stealing or engaging in vigilante justice is too great a liability for most performer troupes. With their weapon skills as their greatest asset, these blades either take up work as enforcers for thieves’ guilds or strike out on their own as adventurers."]}]}
- {:tag :feature,
-  :attrs {:optional "YES", :level "3"},
-  :content
-  [{:tag :name,
-    :attrs nil,
-    :content ["Bard College: College of Satire"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["Bards of the College of Satire are called jesters. They use lowbrow stories, daring acrobatics, and cutting jokes to entertain audiences, ranging from the crowds in a rundown dockside pub to the nobles of a king’s royal court. Where other bards seek forgotten lore or tales of epic bravery, jesters ferret out embarrassing and hilarious stories of all kinds. Whether telling the ribald tale of a brawny stable hand’s affair with an aged duchess or a mocking satire of a paladin of Helm’s cloying innocence, a jester never lets taste, social decorum, or shame get in the way of a good laugh."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["While jesters are masters of puns, jokes, and verbal barbs, they are much more than just comic relief. They are expected to mock and provoke, taking advantage of how even the most powerful folk are expected by tradition to endure a jester’s barbs with good humor. This expectation allows a jester to serve as a critic or a voice of reason when others are too intimidated to speak the truth."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["For the duchess with a taste for strapping young laborers, such tales might serve to warn the targets of her affections and force her to change her ways for lack of willing partners. Striking back at the jester only ruins her already damaged reputation, and might provide the best evidencethat the jester’s satires have hit their mark. But if she is kind and generous to her conquests, the jokes and stories cast her as a kind of folk hero, while drawing even more potential partners to her."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["Jesters are loyal to only one cause: the pursuit and propagation of the truth. They use their comedy and innocuous appearance to break down social barriers and expose corruption, incompetence, and stupidity among the rich and powerful. Whether revealing a con artist’s treachery or exposing a baron’s plans for war as driven by greed and bloodlust, a jester serves as the conscience of a realm."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["Jesters adventure to safeguard the common folk and to undermine the plans of the rich, powerful, and arrogant. Their magic bolsters allies’ spirits while casting doubt into foes’ minds. Among bards, jesters are unmatched acrobats, and their ability to tumble, dodge, leap, and climb makes them slippery opponents in battle."]}]}
- {:tag :feature,
-  :attrs {:level "3"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Expertise"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["At 3rd level, choose two of your skill proficiencies. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["    At 10th level, you can choose another two skill proficiencies to gain this benefit."]}]}
- {:tag :feature,
-  :attrs {:optional "YES", :level "3"},
-  :content
-  [{:tag :name,
-    :attrs nil,
-    :content ["College of Lore: Bonus Proficiencies"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["When you join the College of Lore at 3rd level, you gain proficiency with three skills of your choice."]}]}
- {:tag :feature,
-  :attrs {:optional "YES", :level "3"},
-  :content
-  [{:tag :name,
-    :attrs nil,
-    :content ["College of Lore: Cutting Words"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["Also at 3rd level, you learn how to use your wit to distract, confuse, and otherwise sap the confidence and competence of others. When a creature that you can see within 60 feet of you makes an attack roll, an ability check, or a damage roll, you can use your reaction to expend one of your uses of Bardic Inspiration, rolling a Bardic Inspiration die and subtracting the number rolled from the creature's roll. You can choose to use this feature after the creature makes its roll, but before the DM determines whether the attack roll or ability check succeeds or fails, or before the creature deals its damage. The creature is immune if it can't hear you or if it's immune to being charmed."]}]}
- {:tag :feature,
-  :attrs {:optional "YES", :level "3"},
-  :content
-  [{:tag :name,
-    :attrs nil,
-    :content ["College of Satire: Bonus Proficiencies"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["When you join the College of Satire at 3rd level, you gain proficiency with thieves' tools. You also gain proficiency in Sleight of Hand and one additional skill of your choice. If you are already proficient with thieves' tools or in Sleight of Hand, choose another skill proficiency for each proficiency you already have."]}]}
- {:tag :feature,
-  :attrs {:optional "YES", :level "3"},
-  :content
-  [{:tag :name,
-    :attrs nil,
-    :content ["College of Satire: Tumbling Fool"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["At 3rd level, you master a variety of acrobatic techniques that allow you to evade danger. As a bonus action, you can tumble. When you tumble, you gain the following benefits for the rest of your turn:"]}
-   {:tag :text, :attrs nil, :content nil}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["• You gain the benefits of taking the Dash and Disengage actions."]}
-   {:tag :text, :attrs nil, :content nil}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["• You gain a climbing speed equal to your current speed."]}
-   {:tag :text, :attrs nil, :content nil}
-   {:tag :text,
-    :attrs nil,
-    :content ["• You take half damage from falling."]}]}
- {:tag :feature,
-  :attrs {:optional "YES", :level "3"},
-  :content
-  [{:tag :name,
-    :attrs nil,
-    :content ["College of Swords: Bonus Proficiencies"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["When you join the College of Blades at 3rd level, you gain proficiency with medium armor and with scimitars."]}]}
- {:tag :feature,
-  :attrs {:optional "YES", :level "3"},
-  :content
-  [{:tag :name,
-    :attrs nil,
-    :content ["College of Swords: Fighting Style"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["The College of Blades emphasizes mastery with weapons, granting you access to the two-weapon fighting option for the Fighting Style class feature, which is as follows."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["When you engage in two-weapon fighting, you can add your ability modifier to the damage of the second attack."]}]}
- {:tag :feature,
-  :attrs {:optional "YES", :level "3"},
-  :content
-  [{:tag :name,
-    :attrs nil,
-    :content ["College of Swords: Blade Flourish"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["At 3rd level, you learn to conduct impressive displays of skill with your weapons. When you use the Attack action on your turn and attack with a dagger, longsword, rapier, scimitar, or shortsword, you can attempt one of the following flourishes."]}
-   {:tag :text, :attrs nil, :content nil}
-   {:tag :text, :attrs nil, :content ["\tDefensive Flourish:"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["You spin your weapon around you in swift circles, creating a hypnotic display. As a bonus action, you expend one use of Bardic Inspiration, rolling a Bardic Inspiration die and applying the number rolled as a bonus to your AC until the start of your next turn."]}
-   {:tag :text, :attrs nil, :content nil}
-   {:tag :text, :attrs nil, :content ["\tTrick Shooter's Flourish:"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["This favorite trick of knife throwers allows you to expend one use of Bardic Inspiration as a bonus action. Roll a Bardic Inspiration die and apply the number rolled as a bonus to the next ranged attack roll you make with a dagger this turn. If the target of the attack is an unattended, inanimate object, the bonus equals double the die roll."]}
-   {:tag :text, :attrs nil, :content nil}
-   {:tag :text, :attrs nil, :content ["\tUnnerving Flourish:"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["Your deadly display of combat prowess unnerves your opponents, leaving them cowering in fear and at your mercy. Whenever you reduce a creature to 0 hit points with a melee attack, you can use a bonus action to expend one use of Bardic Inspiration, and instead leave the creature at 1 hit point."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["The creature is frightened of you for a number of minutes equal to your Charisma modifier. It must also make a Charisma saving throw with a DC equal to your spellcasting DC + a bonus equal to the roll of your Bardic Inspiration die. If the creature fails this saving throw, it answers truthfully any questions you ask it and obeys your direct orders while it is frightened by this effect."]}]}
- {:tag :feature,
-  :attrs {:optional "YES", :level "3"},
-  :content
-  [{:tag :name,
-    :attrs nil,
-    :content ["College of Valor: Bonus Proficiencies"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["When you join the College of Valor at 3rd level, you gain proficiency with medium armor, shields, and martial weapons."]}]}
- {:tag :feature,
-  :attrs {:optional "YES", :level "3"},
-  :content
-  [{:tag :name,
-    :attrs nil,
-    :content ["College of Valor: Combat Inspiration"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["Also at 3rd level, you learn to inspire others in battle. A creature that has a Bardic Inspiration die from you can roll that die and add the number rolled to a weapon damage roll it just made. Alternatively, when an attack roll is made against the creature, it can use its reaction to roll the Bardic Inspiration die and add the number rolled to its AC against that attack, after seeing the roll but before knowing whether it hits or misses."]}]}
- {:tag :feature,
-  :attrs {:level "4"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Ability Score Improvement"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["When you reach 4th level you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["    If your DM allows the use of feats, you may instead take a feat."]}]}
- {:tag :feature,
-  :attrs {:level "5"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Bardic Inspiration (d8)"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["At 5th level, your Bardic Inspiration die changes to a d8."]}]}
- {:tag :feature,
-  :attrs {:level "5"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Font of Inspiration"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["Beginning when you reach 5th level, you regain all of your expended uses of Bardic Inspiration when you finish a short or long rest."]}]}
- {:tag :feature,
-  :attrs {:level "6"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Countercharm"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["At 6th level, you gain the ability to use musical notes or words of power to disrupt mind-influencing effects. As an action, you can start a performance that lasts until the end of your next turn. During that time, you and any friendly creatures within 30 feet of you have advantage on saving throws against being frightened or charmed. A creature must be able to hear you to gain this benefit. The performance ends early if you are incapacitated or silenced or if you voluntarily end it (no action required)."]}]}
- {:tag :feature,
-  :attrs {:optional "YES", :level "6"},
-  :content
-  [{:tag :name,
-    :attrs nil,
-    :content ["College of Satire: Fool's Insight"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["At 6th level, your ability to gather stories and lore gains a supernatural edge. You can cast detect thoughts up to a number of times equal to your Charisma modifier. You regain any expended uses of this ability after completing a long rest."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["\tIf a creature resists your attempt to probe deeper and succeeds at its saving throw against your detect thoughts, it immediately suffers an embarrassing social gaffe. It might loudly pass gas, unleash a thunderous burp, trip and fall, or be compelled to tell a tasteless joke."]}]}
- {:tag :feature,
-  :attrs {:optional "YES", :level "6"},
-  :content
-  [{:tag :name,
-    :attrs nil,
-    :content ["College of Swords: Extra Attack"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["Beginning at 6th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."]}]}
- {:tag :feature,
-  :attrs {:optional "YES", :level "6"},
-  :content
-  [{:tag :name,
-    :attrs nil,
-    :content ["College of Lore: Additional Magical Secrets"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["At 6th level, you learn two spells of your choice from any class. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip. The chosen spells count as bard spells for you but don't count against the number of bard spells you know."]}]}
- {:tag :feature,
-  :attrs {:optional "YES", :level "6"},
-  :content
-  [{:tag :name,
-    :attrs nil,
-    :content ["College of Valor: Extra Attack"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["Starting at 6th level, you can attack twice, instead of once, whenever you take the Attack action on your turn."]}]}
- {:tag :feature,
-  :attrs {:level "8"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Ability Score Improvement"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["When you reach 8th level you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["    If your DM allows the use of feats, you may instead take a feat."]}]}
- {:tag :feature,
-  :attrs {:level "9"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Song of Rest (1d8)"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["At 9th level, the extra hit points gained from Song of Rest increases to 1d8."]}]}
- {:tag :feature,
-  :attrs {:level "10"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Bardic Inspiration (d10)"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["At 10th level, your Bardic Inspiration die changes to a d10."]}]}
- {:tag :feature,
-  :attrs {:level "10"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Expertise"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["At 10th level, you can choose another two skill proficiencies. Your proficiency bonus is doubled for any ability check you make that uses either of the chosen proficiencies."]}]}
- {:tag :feature,
-  :attrs {:level "10"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Magical Secrets"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["By 10th level, you have plundered magical knowledge from a wide spectrum of disciplines. Choose two spells from any class, including this one. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["    The chosen spells count as bard spells for you and are included in the number in the Spells Known column of the Bard table."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["    You learn two additional spells from any class at 14th level and again at 18th level."]}]}
- {:tag :feature,
-  :attrs {:level "12"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Ability Score Improvement"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["When you reach 12th level you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["    If your DM allows the use of feats, you may instead take a feat."]}]}
- {:tag :feature,
-  :attrs {:level "13"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Song of Rest (1d10)"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["At 13th level, the extra hit points gained from Song of Rest increases to 1d10."]}]}
- {:tag :feature,
-  :attrs {:level "14"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Magical Secrets"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["At 14th level, choose two additional spells from any class, including this one. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["    The chosen spells count as bard spells for you and are included in the number in the Spells Known column of the Bard table."]}]}
- {:tag :feature,
-  :attrs {:optional "YES", :level "14"},
-  :content
-  [{:tag :name,
-    :attrs nil,
-    :content ["College of Satire: Fool's Luck "]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["Jesters seem to have a knack for pulling themselves out of tight situations, transforming what looks like sure failure into an embarrassing but effective success."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["\tAt 14th level, you can expend one use of Bardic Inspiration after you fail an ability check, fail a saving throw, or miss with an attack roll. Roll a Bardic Inspiration die and add the number rolled to your attack, saving throw, or ability check, using the new result in place of the failed one."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["\tIf using this ability grants you a success on the attack, saving throw, or ability check, note the number you rolled on the Bardic Inspiration die. The DM can then apply that result as a penalty to an attack or check you make, and you cannot use this ability again until you suffer this drawback. When the DM invokes this penalty, describe an embarrassing gaffe or mistake you make as part of the affected die roll."]}]}
- {:tag :feature,
-  :attrs {:optional "YES", :level "14"},
-  :content
-  [{:tag :name,
-    :attrs nil,
-    :content ["College of Swords: Battle Magic"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["At 14th level, you have mastered the art of weaving spellcasting and weapon use into a single harmonious act. When you use your action to cast a bard spell, you can make one weapon attack as a bonus action."]}]}
- {:tag :feature,
-  :attrs {:optional "YES", :level "14"},
-  :content
-  [{:tag :name,
-    :attrs nil,
-    :content ["College of Lore: Peerless Skill"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["Starting at 14th level, when you make an ability check, you can expend one use of Bardic Inspiration. Roll a Bardic Inspiration die and add the number rolled to your ability check. You can choose to do so after you roil the die for the ability check, but before the DM tells you whether you succeed or fail."]}]}
- {:tag :feature,
-  :attrs {:optional "YES", :level "14"},
-  :content
-  [{:tag :name,
-    :attrs nil,
-    :content ["College of Valor: Battle Magic"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["At 14th level, you have mastered the art of weaving spellcasting and weapon use into a single harmonious act. When you use your action to cast a bard spell, you can make one weapon attack as a bonus action."]}]}
- {:tag :feature,
-  :attrs {:level "15"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Bardic Inspiration (d12)"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["At 15th level, your Bardic Inspiration die changes to a d12."]}]}
- {:tag :feature,
-  :attrs {:level "16"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Ability Score Improvement"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["When you reach 16th level you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["    If your DM allows the use of feats, you may instead take a feat."]}]}
- {:tag :feature,
-  :attrs {:level "17"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Song of Rest (1d12)"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["At 17th level, the extra hit points gained from Song of Rest increases to 1d12."]}]}
- {:tag :feature,
-  :attrs {:level "18"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Magical Secrets"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["At 18th level, choose two additional spells from any class, including this one. A spell you choose must be of a level you can cast, as shown on the Bard table, or a cantrip."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["    The chosen spells count as bard spells for you and are included in the number in the Spells Known column of the Bard table."]}]}
- {:tag :feature,
-  :attrs {:level "19"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Ability Score Improvement"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["When you reach 19th level you can increase one ability score of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature."]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["    If your DM allows the use of feats, you may instead take a feat."]}]}
- {:tag :feature,
-  :attrs {:level "20"},
-  :content
-  [{:tag :name, :attrs nil, :content ["Superior Inspiration"]}
-   {:tag :text,
-    :attrs nil,
-    :content
-    ["At 20th level, when you roll initiative and have no uses of Bardic Inspiration left, you regain one use."]}]})
--------------
-
-
 
 ################# 
 		MONSTERS
 #################
 
-PARSER:  [:description [{:tag :description, :attrs nil, :content [Acolytes are junior members of the clergy, usually answerable to a priest. They perform a variety of functions in a temple and are granted minor spellcasting power by their deities.]}]]
-checking:  :description
-tags:  1
-content: "Acolytes are junior members of the clergy, usually answerable to a priest. They perform a variety of functions in a temple and are granted minor spellcasting power by their deities."
--------------
-
-
-PARSER:  [:skill [{:tag :skill, :attrs nil, :content [Medicine +4, Religion +2]}]]
-checking:  :skill
-tags:  1
-content: "Medicine +4, Religion +2"
--------------
-
-
-PARSER:  [:ac [{:tag :ac, :attrs nil, :content [10]}]]
-checking:  :ac
-tags:  1
-content: "10"
--------------
-
-
-PARSER:  [:int [{:tag :int, :attrs nil, :content [10]}]]
-checking:  :int
-tags:  1
-content: "10"
--------------
-
-
-PARSER:  [:speed [{:tag :speed, :attrs nil, :content [30 ft.]}]]
-checking:  :speed
-tags:  1
-content: "30 ft."
--------------
-
-
-PARSER:  [:name [{:tag :name, :attrs nil, :content [Acolyte]}]]
-checking:  :name
-tags:  1
-content: "Acolyte"
--------------
-
-
-PARSER:  [:alignment [{:tag :alignment, :attrs nil, :content [any alignment]}]]
-checking:  :alignment
-tags:  1
-content: "any alignment"
--------------
-
-
-PARSER:  [:cha [{:tag :cha, :attrs nil, :content [11]}]]
-checking:  :cha
-tags:  1
-content: "11"
--------------
-
-
-PARSER:  [:cr [{:tag :cr, :attrs nil, :content [1/4]}]]
-checking:  :cr
-tags:  1
-content: "1/4"
--------------
-
-
-PARSER:  [:spells [{:tag :spells, :attrs nil, :content [light, sacred flame, thaumaturgy, bless, cure wounds, sanctuary]}]]
-checking:  :spells
-tags:  1
-content: "light, sacred flame, thaumaturgy, bless, cure wounds, sanctuary"
--------------
-
-
-PARSER:  [:type [{:tag :type, :attrs nil, :content [humanoid (any race), monster manual]}]]
-checking:  :type
-tags:  1
-content: "humanoid (any race), monster manual"
--------------
-
-
-PARSER:  [:size [{:tag :size, :attrs nil, :content [M]}]]
-checking:  :size
-tags:  1
-content: "M"
--------------
-
-
-PARSER:  [:passive [{:tag :passive, :attrs nil, :content [12]}]]
-checking:  :passive
-tags:  1
-content: "12"
--------------
-
-
-PARSER:  [:str [{:tag :str, :attrs nil, :content [10]}]]
-checking:  :str
-tags:  1
-content: "10"
--------------
-
-
-PARSER:  [:trait [{:tag :trait, :attrs nil, :content [{:tag :name, :attrs nil, :content [Spellcasting]} {:tag :text, :attrs nil, :content [The acolyte is a 1st-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). The acolyte has following cleric spells prepared: ]} {:tag :text, :attrs nil, :content nil} {:tag :text, :attrs nil, :content [• Cantrips (at will): light, sacred flame, thaumaturgy]} {:tag :text, :attrs nil, :content [• 1st level (3 slots): bless, cure wounds, sanctuary]}]}]]
-checking:  :trait
-tags:  1
-content 2: ({:tag :name, :attrs {}, :content ["Spellcasting"]}
- {:tag :text,
-  :attrs {},
-  :content
-  ["The acolyte is a 1st-level spellcaster. Its spellcasting ability is Wisdom (spell save DC 12, +4 to hit with spell attacks). The acolyte has following cleric spells prepared: "]}
- {:tag :text, :attrs {}, :content nil}
- {:tag :text,
-  :attrs {},
-  :content ["• Cantrips (at will): light, sacred flame, thaumaturgy"]}
- {:tag :text,
-  :attrs {},
-  :content ["• 1st level (3 slots): bless, cure wounds, sanctuary"]})
--------------
-
-
-PARSER:  [:con [{:tag :con, :attrs nil, :content [10]}]]
-checking:  :con
-tags:  1
-content: "10"
--------------
-
-
-PARSER:  [:dex [{:tag :dex, :attrs nil, :content [10]}]]
-checking:  :dex
-tags:  1
-content: "10"
--------------
-
-
-PARSER:  [:action [{:tag :action, :attrs nil, :content [{:tag :name, :attrs nil, :content [Club]} {:tag :text, :attrs nil, :content [Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d4) bludgeoning damage.]} {:tag :attack, :attrs nil, :content [Club|2|1d4]}]}]]
-checking:  :action
-tags:  1
-content 2: ({:tag :name, :attrs {}, :content ["Club"]}
- {:tag :text,
-  :attrs {},
-  :content
-  ["Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d4) bludgeoning damage."]}
- {:tag :attack, :attrs {}, :content ["Club|2|1d4"]})
--------------
-
-
-PARSER:  [:hp [{:tag :hp, :attrs nil, :content [9 (2d8)]}]]
-checking:  :hp
-tags:  1
-content: "9 (2d8)"
--------------
-
-
-PARSER:  [:wis [{:tag :wis, :attrs nil, :content [14]}]]
-checking:  :wis
-tags:  1
-content: "14"
--------------
-
-
-PARSER:  [:languages [{:tag :languages, :attrs nil, :content [any one language (usually Common)]}]]
-checking:  :languages
-tags:  1
-content: "any one language (usually Common)"
--------------
-
-
+[{:description
+  "Acolytes are junior members of the clergy, usually answerable to a priest. They perform a variety of functions in a temple and are granted minor spellcasting power by their deities.",
+  :skill "Medicine +4, Religion +2",
+  :ac "10",
+  :int "10",
+  :speed "30 ft.",
+  :name "Acolyte",
+  :alignment "any alignment",
+  :cha "11",
+  :cr "1/4",
+  :spells
+  "light, sacred flame, thaumaturgy, bless, cure wounds, sanctuary",
+  :type "humanoid (any race), monster manual",
+  :size "M",
+  :passive "12",
+  :str "10",
+  :trait
+  [{:name "Spellcasting",
+    :attrs {},
+    :text "• 1st level (3 slots): bless, cure wounds, sanctuary"}],
+  :con "10",
+  :dex "10",
+  :action
+  [{:name "Club",
+    :attrs {},
+    :text
+    "Melee Weapon Attack: +2 to hit, reach 5 ft., one target. Hit: 2 (1d4) bludgeoning damage.",
+    :attack "Club|2|1d4"}],
+  :hp "9 (2d8)",
+  :wis "14",
+  :languages "any one language (usually Common)"}
+ {:senses "blindsight 60 ft., darkvision 120 ft.",
+  :skill "Perception +17, Stealth +7",
+  :ac "22 (natural armor)",
+  :int "18",
+  :speed "40 ft., burrow 40 ft., fly 80 ft.",
+  :name "Ancient Blue Dragon",
+  :alignment "lawful evil",
+  :cha "21",
+  :cr "23",
+  :type "dragon, monster manual",
+  :save "Dex +7, Con +15, Wis +10, Cha +12",
+  :size "G",
+  :passive "27",
+  :immune "lightning",
+  :str "29",
+  :con "27",
+  :dex "10",
+  :action
+  [{:name "Multiattack",
+    :attrs {},
+    :text
+    "The dragon can use its Frightful Presence. It then makes three attacks: one with its bite and two with its claws."}
+   {:name "Bite",
+    :attrs {},
+    :text
+    "Melee Weapon Attack: +16 to hit, reach 15 ft., one target. Hit: 20 (2d10 + 9) piercing damage plus 11 (2d10) lightning damage.",
+    :attack "Bite|16|2d10+9+2d10"}
+   {:name "Claw",
+    :attrs {},
+    :text
+    "Melee Weapon Attack: +16 to hit, reach 10 ft., one target. Hit: 16 (2d6 + 9) slashing damage.",
+    :attack "Claw|16|2d6+9"}
+   {:name "Tail",
+    :attrs {},
+    :text
+    "Melee Weapon Attack: +16 to hit, reach 20 ft., one target. Hit: 18 (2d8 + 9) bludgeoning damage.",
+    :attack "Tail|16|2d8+9"}
+   {:name "Frightful Presence",
+    :attrs {},
+    :text
+    "Each creature of the dragon's choice that is within 120 feet of the dragon and aware of it must succeed on a DC 20 Wisdom saving throw or become frightened for 1 minute. A creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. If a creature's saving throw is successful or the effect ends for it, the creature is immune to the dragon's Frightful Presence for the next 24 hours."}
+   {:name "Lightning Breath (Recharge 5-6)",
+    :attrs {},
+    :text
+    "The dragon exhales lightning in a 120-foot line that is 10 feet wide. Each creature in that line must make a DC 23 Dexterity saving throw, taking 88 (16d10) lightning damage on a failed save, or half as much damage on a successful one.",
+    :attack "Lightning Breath||16d10"}],
+  :legendary
+  [{:name "Detect",
+    :attrs {},
+    :text "The dragon makes a Wisdom (Perception) check."}
+   {:name "Tail Attack",
+    :attrs {},
+    :text "The dragon makes a tail attack."}
+   {:name "Wing Attack (Costs 2 Actions)",
+    :attrs {},
+    :text
+    "The dragon beats its wings. Each creature within 15 ft. of the dragon must succeed on a DC 24 Dexterity saving throw or take 16 (2d6 + 9) bludgeoning damage and be knocked prone. The dragon can then fly up to half its flying speed."}],
+  :hp "481 (26d20+208)",
+  :wis "17",
+  :languages "Common, Draconic"}
+ {:skill "Arcana +13, History +13",
+  :ac "12 (15 with mage armor)",
+  :int "20",
+  :speed "30 ft.",
+  :name "Archmage",
+  :alignment "any alignment",
+  :cha "16",
+  :cr "12",
+  :resist
+  "damage from spells; non magical bludgeoning, piercing, and slashing (from stoneskin)",
+  :spells
+  "fire bolt, light, mage hand, prestidigitation, shocking grasp, detect magic, identify, mage armor, magic missile, detect thoughts, mirror image, misty step, counterspell, fly, lightning bolt, banishment, fire shield, stoneskin, cone of cold, scrying, wall of force, globe of invulnerability, teleport, mind blank, time stop",
+  :type "humanoid (any race), monster manual",
+  :save "Int +9, Wis +6",
+  :size "M",
+  :passive "12",
+  :str "10",
+  :trait
+  [{:name "Magic Resistance",
+    :attrs {},
+    :text
+    "The archmage has advantage on saving throws against spells and other magical effects."}
+   {:name "Spellcasting",
+    :attrs {},
+    :text
+    "* The archmage casts these spells on itself before combat."}],
+  :con "12",
+  :dex "14",
+  :action
+  [{:name "Dagger",
+    :attrs {},
+    :text
+    "Melee or Ranged Weapon Attack: +6 to hit, reach 5 ft. or range 20/60 ft., one target. Hit: 4 (1d4 + 2) piercing damage.",
+    :attack "Dagger|6|1d4+2"}],
+  :hp "99 (18d8+18)",
+  :wis "15",
+  :languages "any six languages"}]
