@@ -20,7 +20,6 @@
     (sc/config! main-frame :content main-display)
     (-> main-frame sc/pack! sc/show!)))
 
-
 (defn -main
   "LEEEARNING"
   [& args]
