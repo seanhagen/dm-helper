@@ -5,6 +5,7 @@
   (:require [clojure.java.io :as io]
             [clojure.xml :as xml]
             [clojure.zip :as zip]
+            [inflections.core :as infl]
             [clojure.string :as string]))
 
 (defn zip-str [s]
@@ -18,132 +19,27 @@
       (io/file res))))
 
 (defn is-xml? [file]
-  ;; (re-matches (re-pattern "\\.xml$") file)
   (not (nil? (re-find (re-pattern "\\.xml$") file))))
 
 (defn not-russian? [file]
   (nil? (re-find (re-pattern "Russian") file)))
 
-(defn not-ua? [file]
-  (nil? (re-find (re-pattern "Unearthed Arcana") file)))
-
 (defn all-xml-from-dir [dirpath]
-  (doall (filter (fn [n]
-                   (and
-                    (not-russian? (.getPath n))
-                    (is-xml? (.getName n))
-                    (not-ua? (.getPath n))))
-                 (file-seq (io/file dirpath)))))
+  (doall (filter
+          (fn [n]
+            (and (not-russian? (.getPath n)) (is-xml? (.getName n))))
+          (file-seq (io/file dirpath)))))
 
-(defn files-by-filter [base-path folder f]
-  (let [path (io/file base-path folder)
-        files (file-seq path)]
-    (filter f files)))
-
-(defn files-by-folder [base-path folder]
-  (files-by-filter base-path folder #(is-xml? (.getPath %))))
-
-(defn files-from-dir
-  [base-path dir]
-  (files-by-folder base-path dir))
-
-(defn specific-file-from-dir [base-path folder name]
-  (let [pattern (re-pattern name)
-        method #(re-find pattern (.getPath %))]
-    (files-by-filter base-path folder method)))
-
-(defn group-by-tags
-  [t]
-  (group-by :tag (:content t)))
-
-(defn newline-if-nil [content]
-  (if (nil? (:content content)) "" (:content content)))
-
-(defn stat-to-map
-  "Turns {:tag :name, :content [Ancient Gold Dragon]} into {:name 'Ancient Gold Dragon'}"
-  ;; TODO: need to fix this:
-  ;; Stat to map:  {:tag :modifier, :attrs {:category ability score}, :content [charisma +1]}
-  ;; new map:  {:modifier charisma +1}
-  [stat]
-  (let [n (:tag stat)
-        content (:content stat)
-        test (into {} (if (not (-> content first string?))
-                        (map (fn [e]
-                               (let [name (first e)
-                                     tags (first (rest e))
-                                     content (string/join
-                                              (map #(str (first %) "\n")
-                                                   (map newline-if-nil tags)))]
-                                 (println n " - count content: " (count content) ", str?: " (string? content))
-                                 {name content})
-                               ) (group-by :tag content))
-                        {n content}
-                        ))]
-
-    (println "count content: " content " - " (count content) " \n\t\t " (second test) " - " (count (second test)))
-
-    (if (not (= (first (keys test)) n))
-      {n [test]}
-      test
-      )))
-
-(defn needs-better-name
-  ""
-  [thing]
-  (let [name (first thing)
-        tags (second thing)
-        t (string? (first (:content (first tags))))]
-
-    (println name " - tags: " (count (:content (first tags))) " - " t "\n")
-
-    (if (not t)
-      (let [argh (:content (first tags))]
-        (println "\n   wheeeeee" argh )
-
-        (println "blergh :" (into [] (map stat-to-map tags)))
-
-        (println  "\n\n")
-        )
-      )
-
-    (if (= (count tags) 1)
-      (stat-to-map (first tags))
-      ;;{name (into [] (map stat-to-map tags))}
-      (into [] (map stat-to-map tags))
-      )
-    ))
-
-(defn also-needs-name
-  ""
-  [things]
-
-  (loop [list things
-         result []]
-    (let [d (into {} (first list))
-          r (rest list)]
-      (if (> (count r) 0)
-        (recur r (conj result d))
-        (conj result (into {} (first list)))))))
-
-(defn load-from-file
-  ""
-  [file]
-  (also-needs-name
-   (map #(map needs-better-name (group-by-tags %))
-        (:content (first (zip-str (slurp (data-file file))))))))
-
-(defn load-all-things
-  [files]
-  (loop [files files
-         results []]
-    (let [f (first files)
-          r (rest files)]
-      (if (> (count r) 0)
-        (recur r (into results (load-from-file (.getPath f))))
-        (into results (load-from-file (.getPath f)))))))
+(defn fix-info-keys [info]
+  (into {}
+        (map
+         (fn [e]
+           (let [key (first e)
+                 stuff (second e)]
+             {(keyword (infl/plural (name key))) stuff}))
+         info)))
 
 (defn not-re-find-name?
-  ""
   [thing pattern]
   (not
    (nil?

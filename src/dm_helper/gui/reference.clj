@@ -1,4 +1,4 @@
-(ns dm-helper.gui.items
+(ns dm-helper.gui.reference
   (:gen-class)
   (:require [dm-helper.files.books :as book]
             [seesaw.core :as sc]
@@ -10,10 +10,13 @@
 
 (def items-ref (ref []))
 
-(defn display-monster-in-panel
-  [selected items panel]
-
-  )
+(defn display-monster-in-panel [selected items panel])
+(defn display-spell-in-panel [selected items panel])
+(defn display-race-in-panel [selected items panel])
+(defn display-class-in-panel [selected items panel])
+(defn display-feat-in-panel [selected items panel])
+(defn display-background-in-panel [selected items panel])
+(defn display-item-in-panel [selected items panel])
 
 (defn bold-label [t]
   (sc/label :text t

@@ -4,17 +4,10 @@
         [clojure.pprint])
   (:import [org.apache.commons.io.FilenameUtils])
   (:require [dm-helper.files.books :as books]
-            [dm-helper.files.utils :as util]
             [dm-helper.gui.frame :as gui-frame]
-            [dm-helper.gui.items :as gui-ref]
+            [dm-helper.gui.reference :as gui-ref]
             [seesaw.core :as sc]
-            [seesaw.border :as sb]
-            [seesaw.event :as se]
-            [seesaw.chooser :as seec]
-            [seesaw.bind :as sbind]
-            [clojure.string :as string]
-            [clojure.java.io :as io]
-            ))
+            [clojure.java.io :as io]))
 
 (def info-ref (ref {:monsters [] :spells [] :races [] :classes [] :feats [] :backgrounds [] :items []}))
 
@@ -27,149 +20,35 @@
     (sc/config! main-frame :content main-display)
     (-> main-frame sc/pack! sc/show!)))
 
-(defn get-proper-content [thing]
-  (let [c "what"])
-  )
-
-(defn test-parser [thing]
-  (let [name (first thing)
-        tags (map :content (second thing))]
-    (if (-> tags first first string?)
-      {name (-> tags first first)}
-      {name (into []
-                  (map
-                   (fn [e]
-                     (into {}
-                           (map
-                            (fn [f]
-                              (let [n (first f)
-                                    t (second f)]
-                                {n (first (map #(-> % :content first) t))}
-                                )
-
-                              )
-                            (group-by :tag e)
-                            ))
-
-
-                     )
-                   tags))}
-      )
-    )
-  )
-
-(defn parser [thing]
-  (let [name (first thing)
-        tags (second thing)
-
-        content (map :content tags)
-        types (distinct (map type (flatten content)))
-        is-string (first (distinct (map string? (flatten content))))
-        ]
-    (if is-string
-      {name (string/join (map
-                          #(string/join (if (nil? %) "\n" %))
-                          (flatten content)))}
-
-
-      {name
-       (into []
-             (map
-              #(into {} (map
-                         (fn [h]
-                           (let [name (:tag h)
-                                 attr (:attrs h)
-                                 content (first (:content h))]
-                             {name content :attrs attr}))) %)
-
-              ;;(flatten)
-              (map
-               (fn [e]
-                 (map (fn [f]
-                        ;;(println "f: " f)
-                        (into f {:attrs (into (if (nil? (:attrs f)) {} (:attrs f)) (get-in e [:attrs]))}))
-                      (:content e)
-                      )
-                 )
-               tags)))}
-      )))
-
-(defn parse-all [things]
-  (into []
-        (doall (map
-
-                (fn [e]
-                  (into {} (map parser (group-by :tag e)))
-                  )
-
-                (map
-                 (fn [e]
-                   (-> e :content ) ;;#(group-by :tag %)
-                   )
-                 things))))
-
-  )
 
 (defn -main
   "LEEEARNING"
   [& args]
   ;; (books/load-saved-info)
   ;; (println (System/getProperty "java.runtime.version"))
-  ;; (def data (books/load-all-from-dir "/home/sean/Dropbox/D&D App Files"))
-  ;; (spit "info.clj" data)
-  ;; (println "keys: " (keys data))
   ;; (println "User home directory is: " books/app-dir)
 
-  ;; (sc/native!)
-  ;; (main-app)
+  (sc/native!)
+  (main-app)
 
-  (let [xml (books/xml-from-file (io/resource "test.xml"))
-        parts (group-by :tag (:content (first xml)))]
-
-    (println "\n################# \n\t\tMONSTERS\n#################\n")
-    (pprint (parse-all (:monster parts)))
-
-    ;; (println "################# \n\t\tRACES\n#################\n")
-
-    ;; (pprint
-    ;;  (into {}
-    ;;        (doall (map
-    ;;                parser
-    ;;                (group-by :tag (:content (first (:race parts))))))))
-
-    ;; (println "\n################# \n\t\tCLASSES\n#################\n")
-
-    ;; (pprint
-    ;;  (into {}
-    ;;        (doall (map
-    ;;                parser
-    ;;                (group-by :tag (:content (first (:class parts))))))))
-
-    ;; (println "\n################# \n\t\tSPELLS\n#################\n")
-
-    ;; (pprint
-    ;;  (into {}
-    ;;        (doall (map
-    ;;                parser
-    ;;                (group-by :tag (:content (first (:spell parts))))))))
-
-    ;; (println "\n################# \n\t\tMONSTERS\n#################\n")
-
-    ;; (pprint
-    ;;  (into {}
-    ;;        (doall (map
-    ;;                parser
-    ;;                (group-by :tag (:content (first (:monster parts))))))))
+  ;; (let [xml (books/xml-from-file (io/resource "test.xml"))
+  ;;       parts (group-by :tag (:content (first xml)))]
+  ;;   (println "\n#################\n\t\tSPELL\n#################\n")
+  ;;   (pprint (parse-all (:spell parts))))
 
 
+  ;; (let [things (books/parse-from-directory "/home/sean/Dropbox/D&D App Files")]
+  ;;   (doall
+  ;;    (map
+  ;;     (fn [e]
+  ;;       (let [part (first e)
+  ;;             items (second e)]
+  ;;         (println part " - " (count items))
 
-    ;; (pprint
-    ;;  (into {}
-    ;;        (doall (map
-    ;;                parser
-    ;;                (group-by :tag (:content (second (:monster parts))))))))
+  ;;         ;; (if (= part :race)
+  ;;         ;;   (doall (map (fn [e] (pprint (:name e))) items)))
 
+  ;;         )) things)))
 
-    )
-
+  ;; (pprint (keys @info-ref))
   )

@@ -14,12 +14,13 @@
 (def path-show (sc/text :editable? false :columns 20))
 (sbind/bind path-ref (sbind/property path-show :text))
 
-(def launch-file-selector (fn [e]
-                            (seec/choose-file :selection-mode :dirs-only
-                                              :success-fn (fn [f,e]
-                                                            (let [path (fn [old] (.getPath e))]
-                                                              (dosync
-                                                               (alter path-ref path)))))))
+(def launch-file-selector
+  (fn [e]
+    (seec/choose-file :selection-mode :dirs-only
+                      :success-fn (fn [f,e]
+                                    (let [path (fn [old] (.getPath e))]
+                                      (dosync
+                                       (alter path-ref path)))))))
 
 (def file-dialog (sc/button
                   :text "Select Directory"
@@ -28,13 +29,15 @@
 (defn show-load-files-dialog [e items-ref]
   (sc/show!
    (sc/pack!
-    (sc/dialog :content (sc/horizontal-panel :items ["Path to D&D App Files: " path-show file-dialog])
+    (sc/dialog :content (sc/horizontal-panel
+                         :items ["Path to D&D App Files: " path-show file-dialog])
                :modal? true
                :success-fn (fn [e]
-                             (let [info (books/load-all-from-dir @path-ref)]
-                               (books/save-info-to-file info)
+                             (let [info (books/parse-from-directory @path-ref)
+                                   fixed (util/fix-info-keys info)]
+                               (books/save-info-to-file fixed)
                                (dosync
-                                (ref-set items-ref info))))))))
+                                (ref-set items-ref fixed))))))))
 
 (defn build-main-frame
   [items-ref]
