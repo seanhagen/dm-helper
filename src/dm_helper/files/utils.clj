@@ -8,6 +8,8 @@
             [inflections.core :as infl]
             [clojure.string :as string]))
 
+(def app-dir (str (System/getProperty "user.home") "/.dm-helper"))
+
 (defn zip-str [s]
   (zip/xml-zip
    (xml/parse (java.io.ByteArrayInputStream. (.getBytes s)))))
@@ -53,3 +55,14 @@
           (filter
            #(not-re-find-name? % pattern)
            things))))
+
+(defn load-saved-ref [ref file]
+  (let [saved (str app-dir "/" file)]
+    (if (.exists (io/as-file saved))
+      (let [info (read-string (slurp saved))]
+        (dosync (alter ref into info))))))
+
+(defn save-ref-to-file [info file]
+  (let [saved (str app-dir "/" file)]
+    (.mkdir (java.io.File. app-dir))
+    (spit saved info)))

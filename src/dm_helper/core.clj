@@ -6,9 +6,11 @@
   (:require [dm-helper.files.books :as books]
             [dm-helper.gui.frame :as gui-frame]
             [dm-helper.gui.reference :as gui-ref]
+            [dm-helper.gui.project :as gui-proj]
             [seesaw.core :as sc]
             [clojure.java.io :as io]))
 
+(def projects-ref (ref {:projects []}))
 (def info-ref (ref {:monsters [] :spells [] :races [] :classes [] :feats [] :backgrounds [] :items []}))
 
 (defn main-app []
@@ -23,12 +25,16 @@
 (defn -main
   "LEEEARNING"
   [& args]
+
+  (sc/native!)
+  (gui-proj/show-project-chooser)
+  ;;(main-app)
+
+
   ;; (books/load-saved-info)
   ;; (println (System/getProperty "java.runtime.version"))
   ;; (println "User home directory is: " books/app-dir)
 
-  (sc/native!)
-  (main-app)
 
   ;; (let [xml (books/xml-from-file (io/resource "test.xml"))
   ;;       parts (group-by :tag (:content (first xml)))]

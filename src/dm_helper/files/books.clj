@@ -8,19 +8,11 @@
   (util/zip-str
    (slurp (util/data-file (.getPath file)))))
 
-(def app-dir (str (System/getProperty "user.home") "/.dm-helper"))
-
 (defn load-saved-info [info-ref]
-  (let [saved (str app-dir "/info.clj")]
-    (if (.exists (io/as-file saved))
-      (let [info (read-string (slurp saved))]
-        (dosync
-         (alter info-ref into info))))))
+  (util/load-saved-ref info-ref "info.clj"))
 
 (defn save-info-to-file [info]
-  (let [saved (str app-dir "/info.clj")]
-    (.mkdir (java.io.File. app-dir))
-    (spit saved info)))
+  (util/save-ref-to-file info "info.clj"))
 
 (defn sections-from-data [info]
   (map (fn [e] (string/capitalize (name e))) (keys info)))
